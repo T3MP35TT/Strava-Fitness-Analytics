@@ -1,0 +1,862 @@
+{
+  "schema_version": 1,
+  "checked_at_utc": "2026-09-25T22:43:35.998434+00:00",
+  "overall_status": "WARN",
+  "summary": {
+    "rows": 940,
+    "participants": 33,
+    "checks": 78,
+    "passed": 75,
+    "warnings": 3,
+    "failures": 0
+  },
+  "date_range": {
+    "start": "2016-04-12",
+    "end": "2016-05-12"
+  },
+  "dataset": {
+    "path": "C:\\Labmentix Projects\\Strava Fitness App Project\\data\\processed\\fitness_daily_master.csv",
+    "sha256": "e3320f4dd67ebb7ade676eb865dc8aa9ee2ccf4e38edd714266d6597ad2d004e"
+  },
+  "checks": [
+    {
+      "name": "dataset_non_empty",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 940,
+      "threshold": "> 0",
+      "detail": "Canonical dataset contains usable rows."
+    },
+    {
+      "name": "required_schema",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": [],
+      "threshold": "all required columns present",
+      "detail": "All model input and target columns are present."
+    },
+    {
+      "name": "valid_dates",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "All Date values are parseable."
+    },
+    {
+      "name": "valid_participant_ids",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "All participant identifiers are present."
+    },
+    {
+      "name": "participant_day_duplicates",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "No duplicate participant-day records were found."
+    },
+    {
+      "name": "future_dates",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "No future-dated observations were found."
+    },
+    {
+      "name": "participant_date_continuity",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": {
+        "transitions": 907,
+        "gaps": 0,
+        "gap_rate": 0.0
+      },
+      "threshold": {
+        "warning_rate": 0.05
+      },
+      "detail": "Participant observations are consecutive across all observed transitions."
+    },
+    {
+      "name": "numeric_validity:Active_Minutes_Pct",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "Active_Minutes_Pct is numerically parseable."
+    },
+    {
+      "name": "numeric_validity:Calories",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "Calories is numerically parseable."
+    },
+    {
+      "name": "numeric_validity:FairlyActiveMinutes",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "FairlyActiveMinutes is numerically parseable."
+    },
+    {
+      "name": "numeric_validity:Hourly_Avg_Intensity",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "Hourly_Avg_Intensity is numerically parseable."
+    },
+    {
+      "name": "numeric_validity:Hourly_Steps_Avg",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "Hourly_Steps_Avg is numerically parseable."
+    },
+    {
+      "name": "numeric_validity:LightlyActiveMinutes",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "LightlyActiveMinutes is numerically parseable."
+    },
+    {
+      "name": "numeric_validity:METs_Avg",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "METs_Avg is numerically parseable."
+    },
+    {
+      "name": "numeric_validity:METs_Max",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "METs_Max is numerically parseable."
+    },
+    {
+      "name": "numeric_validity:Minute_Active_Step_Minutes",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "Minute_Active_Step_Minutes is numerically parseable."
+    },
+    {
+      "name": "numeric_validity:Minute_Intensity_Avg",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "Minute_Intensity_Avg is numerically parseable."
+    },
+    {
+      "name": "numeric_validity:SedentaryMinutes",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "SedentaryMinutes is numerically parseable."
+    },
+    {
+      "name": "numeric_validity:Sleep_Efficiency_Pct",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "Sleep_Efficiency_Pct is numerically parseable."
+    },
+    {
+      "name": "numeric_validity:Sleep_Minutes",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "Sleep_Minutes is numerically parseable."
+    },
+    {
+      "name": "numeric_validity:Time_In_Bed_Minutes",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "Time_In_Bed_Minutes is numerically parseable."
+    },
+    {
+      "name": "numeric_validity:TotalDistance",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "TotalDistance is numerically parseable."
+    },
+    {
+      "name": "numeric_validity:TotalSteps",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "TotalSteps is numerically parseable."
+    },
+    {
+      "name": "numeric_validity:Total_Active_Minutes",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "Total_Active_Minutes is numerically parseable."
+    },
+    {
+      "name": "numeric_validity:TrackerDistance",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "TrackerDistance is numerically parseable."
+    },
+    {
+      "name": "numeric_validity:VeryActiveMinutes",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "VeryActiveMinutes is numerically parseable."
+    },
+    {
+      "name": "numeric_validity:Very_Active_Pct",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "Very_Active_Pct is numerically parseable."
+    },
+    {
+      "name": "missingness:Active_Minutes_Pct",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0.0,
+      "threshold": {
+        "warning": 0.1,
+        "block": 0.4
+      },
+      "detail": "Active_Minutes_Pct missingness is 0.0%."
+    },
+    {
+      "name": "missingness:Calories",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0.0,
+      "threshold": {
+        "warning": 0.1,
+        "block": 0.4
+      },
+      "detail": "Calories missingness is 0.0%."
+    },
+    {
+      "name": "missingness:FairlyActiveMinutes",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0.0,
+      "threshold": {
+        "warning": 0.1,
+        "block": 0.4
+      },
+      "detail": "FairlyActiveMinutes missingness is 0.0%."
+    },
+    {
+      "name": "missingness:Hourly_Avg_Intensity",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0.006382978723404255,
+      "threshold": {
+        "warning": 0.1,
+        "block": 0.4
+      },
+      "detail": "Hourly_Avg_Intensity missingness is 0.6%."
+    },
+    {
+      "name": "missingness:Hourly_Steps_Avg",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0.006382978723404255,
+      "threshold": {
+        "warning": 0.1,
+        "block": 0.4
+      },
+      "detail": "Hourly_Steps_Avg missingness is 0.6%."
+    },
+    {
+      "name": "missingness:LightlyActiveMinutes",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0.0,
+      "threshold": {
+        "warning": 0.1,
+        "block": 0.4
+      },
+      "detail": "LightlyActiveMinutes missingness is 0.0%."
+    },
+    {
+      "name": "missingness:METs_Avg",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0.006382978723404255,
+      "threshold": {
+        "warning": 0.1,
+        "block": 0.4
+      },
+      "detail": "METs_Avg missingness is 0.6%."
+    },
+    {
+      "name": "missingness:METs_Max",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0.006382978723404255,
+      "threshold": {
+        "warning": 0.1,
+        "block": 0.4
+      },
+      "detail": "METs_Max missingness is 0.6%."
+    },
+    {
+      "name": "missingness:Minute_Active_Step_Minutes",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0.006382978723404255,
+      "threshold": {
+        "warning": 0.1,
+        "block": 0.4
+      },
+      "detail": "Minute_Active_Step_Minutes missingness is 0.6%."
+    },
+    {
+      "name": "missingness:Minute_Intensity_Avg",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0.006382978723404255,
+      "threshold": {
+        "warning": 0.1,
+        "block": 0.4
+      },
+      "detail": "Minute_Intensity_Avg missingness is 0.6%."
+    },
+    {
+      "name": "missingness:SedentaryMinutes",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0.0,
+      "threshold": {
+        "warning": 0.1,
+        "block": 0.4
+      },
+      "detail": "SedentaryMinutes missingness is 0.0%."
+    },
+    {
+      "name": "missingness:Sleep_Efficiency_Pct",
+      "status": "WARN",
+      "severity": "WARN",
+      "value": 0.5638297872340425,
+      "threshold": {
+        "warning": 0.1,
+        "block": 0.4
+      },
+      "detail": "Sleep_Efficiency_Pct missingness is 56.4%. The model pipeline handles this field with median imputation."
+    },
+    {
+      "name": "missingness:Sleep_Minutes",
+      "status": "WARN",
+      "severity": "WARN",
+      "value": 0.5638297872340425,
+      "threshold": {
+        "warning": 0.1,
+        "block": 0.4
+      },
+      "detail": "Sleep_Minutes missingness is 56.4%. The model pipeline handles this field with median imputation."
+    },
+    {
+      "name": "missingness:Time_In_Bed_Minutes",
+      "status": "WARN",
+      "severity": "WARN",
+      "value": 0.5638297872340425,
+      "threshold": {
+        "warning": 0.1,
+        "block": 0.4
+      },
+      "detail": "Time_In_Bed_Minutes missingness is 56.4%. The model pipeline handles this field with median imputation."
+    },
+    {
+      "name": "missingness:TotalDistance",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0.0,
+      "threshold": {
+        "warning": 0.1,
+        "block": 0.4
+      },
+      "detail": "TotalDistance missingness is 0.0%."
+    },
+    {
+      "name": "missingness:TotalSteps",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0.0,
+      "threshold": {
+        "warning": 0.1,
+        "block": 0.4
+      },
+      "detail": "TotalSteps missingness is 0.0%."
+    },
+    {
+      "name": "missingness:Total_Active_Minutes",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0.0,
+      "threshold": {
+        "warning": 0.1,
+        "block": 0.4
+      },
+      "detail": "Total_Active_Minutes missingness is 0.0%."
+    },
+    {
+      "name": "missingness:VeryActiveMinutes",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0.0,
+      "threshold": {
+        "warning": 0.1,
+        "block": 0.4
+      },
+      "detail": "VeryActiveMinutes missingness is 0.0%."
+    },
+    {
+      "name": "missingness:Very_Active_Pct",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0.0,
+      "threshold": {
+        "warning": 0.1,
+        "block": 0.4
+      },
+      "detail": "Very_Active_Pct missingness is 0.0%."
+    },
+    {
+      "name": "non_negative:TotalSteps",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "TotalSteps contains no negative values."
+    },
+    {
+      "name": "non_negative:TotalDistance",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "TotalDistance contains no negative values."
+    },
+    {
+      "name": "non_negative:TrackerDistance",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "TrackerDistance contains no negative values."
+    },
+    {
+      "name": "non_negative:Calories",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "Calories contains no negative values."
+    },
+    {
+      "name": "non_negative:VeryActiveMinutes",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "VeryActiveMinutes contains no negative values."
+    },
+    {
+      "name": "non_negative:FairlyActiveMinutes",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "FairlyActiveMinutes contains no negative values."
+    },
+    {
+      "name": "non_negative:LightlyActiveMinutes",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "LightlyActiveMinutes contains no negative values."
+    },
+    {
+      "name": "non_negative:Total_Active_Minutes",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "Total_Active_Minutes contains no negative values."
+    },
+    {
+      "name": "non_negative:Sleep_Minutes",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "Sleep_Minutes contains no negative values."
+    },
+    {
+      "name": "non_negative:Time_In_Bed_Minutes",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "Time_In_Bed_Minutes contains no negative values."
+    },
+    {
+      "name": "non_negative:METs_Avg",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "METs_Avg contains no negative values."
+    },
+    {
+      "name": "non_negative:METs_Max",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "METs_Max contains no negative values."
+    },
+    {
+      "name": "non_negative:Hourly_Avg_Intensity",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "Hourly_Avg_Intensity contains no negative values."
+    },
+    {
+      "name": "non_negative:Hourly_Steps_Avg",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "Hourly_Steps_Avg contains no negative values."
+    },
+    {
+      "name": "non_negative:Minute_Intensity_Avg",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "Minute_Intensity_Avg contains no negative values."
+    },
+    {
+      "name": "non_negative:Minute_Active_Step_Minutes",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": 0,
+      "detail": "Minute_Active_Step_Minutes contains no negative values."
+    },
+    {
+      "name": "percent_range:Active_Minutes_Pct",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": "[0, 100]",
+      "detail": "Active_Minutes_Pct is within the expected percentage range."
+    },
+    {
+      "name": "percent_range:Very_Active_Pct",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": "[0, 100]",
+      "detail": "Very_Active_Pct is within the expected percentage range."
+    },
+    {
+      "name": "percent_range:Sleep_Efficiency_Pct",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": 0,
+      "threshold": "[0, 100]",
+      "detail": "Sleep_Efficiency_Pct is within the expected percentage range."
+    },
+    {
+      "name": "class_values:activity_target",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": {
+        "invalid": 0,
+        "unknown": 0
+      },
+      "threshold": "known target values are binary 0/1",
+      "detail": "Meets_10k_Steps contains valid binary classes; 0 observations are unknown."
+    },
+    {
+      "name": "class_balance:activity_target",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": {
+        "positive": 303,
+        "negative": 637,
+        "unknown": 0
+      },
+      "threshold": {
+        "minimum_positive": 40,
+        "minimum_negative": 40
+      },
+      "detail": "Meets_10k_Steps has 303 positive, 637 negative, and 0 unknown observations."
+    },
+    {
+      "name": "class_values:sleep_target",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": {
+        "invalid": 0,
+        "unknown": 530
+      },
+      "threshold": "known target values are binary 0/1",
+      "detail": "Sleep_7h_Target contains valid binary classes; 530 observations are unknown."
+    },
+    {
+      "name": "class_balance:sleep_target",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": {
+        "positive": 229,
+        "negative": 181,
+        "unknown": 530
+      },
+      "threshold": {
+        "minimum_positive": 30,
+        "minimum_negative": 30
+      },
+      "detail": "Sleep_7h_Target has 229 positive, 181 negative, and 530 unknown observations."
+    },
+    {
+      "name": "feature_contract:calories",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": [
+        "Lag1_TotalSteps",
+        "Lag1_TotalDistance",
+        "Lag1_VeryActiveMinutes",
+        "Lag1_FairlyActiveMinutes",
+        "Lag1_LightlyActiveMinutes",
+        "Lag1_SedentaryMinutes",
+        "Lag1_Total_Active_Minutes",
+        "Lag1_Active_Minutes_Pct",
+        "Lag1_Very_Active_Pct",
+        "Lag1_METs_Avg",
+        "Lag1_METs_Max",
+        "Lag1_Hourly_Avg_Intensity",
+        "Lag1_Hourly_Steps_Avg",
+        "Lag1_Minute_Intensity_Avg",
+        "Lag1_Minute_Active_Step_Minutes",
+        "Lag1_Sleep_Minutes",
+        "Lag1_Time_In_Bed_Minutes",
+        "Lag1_Sleep_Efficiency_Pct",
+        "Lag1_Calories",
+        "Target_Day_Of_Week_Num",
+        "Target_Is_Weekend"
+      ],
+      "threshold": [
+        "Lag1_TotalSteps",
+        "Lag1_TotalDistance",
+        "Lag1_VeryActiveMinutes",
+        "Lag1_FairlyActiveMinutes",
+        "Lag1_LightlyActiveMinutes",
+        "Lag1_SedentaryMinutes",
+        "Lag1_Total_Active_Minutes",
+        "Lag1_Active_Minutes_Pct",
+        "Lag1_Very_Active_Pct",
+        "Lag1_METs_Avg",
+        "Lag1_METs_Max",
+        "Lag1_Hourly_Avg_Intensity",
+        "Lag1_Hourly_Steps_Avg",
+        "Lag1_Minute_Intensity_Avg",
+        "Lag1_Minute_Active_Step_Minutes",
+        "Lag1_Sleep_Minutes",
+        "Lag1_Time_In_Bed_Minutes",
+        "Lag1_Sleep_Efficiency_Pct",
+        "Lag1_Calories",
+        "Target_Day_Of_Week_Num",
+        "Target_Is_Weekend"
+      ],
+      "detail": "Persisted artifact feature contract matches the predictive registry."
+    },
+    {
+      "name": "target_contract:calories",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": "Calories",
+      "threshold": "Calories",
+      "detail": "Persisted target matches the registry."
+    },
+    {
+      "name": "artifact_load:calories",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": "C:\\Labmentix Projects\\Strava Fitness App Project\\models\\predictive_models\\calories\\model.joblib",
+      "threshold": "loadable joblib",
+      "detail": "Persisted model artifact loaded successfully."
+    },
+    {
+      "name": "feature_contract:activity_target",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": [
+        "Lag1_TotalSteps",
+        "Lag1_TotalDistance",
+        "Lag1_VeryActiveMinutes",
+        "Lag1_FairlyActiveMinutes",
+        "Lag1_LightlyActiveMinutes",
+        "Lag1_SedentaryMinutes",
+        "Lag1_Total_Active_Minutes",
+        "Lag1_Active_Minutes_Pct",
+        "Lag1_Very_Active_Pct",
+        "Lag1_METs_Avg",
+        "Lag1_METs_Max",
+        "Lag1_Hourly_Avg_Intensity",
+        "Lag1_Hourly_Steps_Avg",
+        "Lag1_Minute_Intensity_Avg",
+        "Lag1_Minute_Active_Step_Minutes",
+        "Lag1_Sleep_Minutes",
+        "Lag1_Time_In_Bed_Minutes",
+        "Lag1_Sleep_Efficiency_Pct",
+        "Lag1_Calories",
+        "Target_Day_Of_Week_Num",
+        "Target_Is_Weekend"
+      ],
+      "threshold": [
+        "Lag1_TotalSteps",
+        "Lag1_TotalDistance",
+        "Lag1_VeryActiveMinutes",
+        "Lag1_FairlyActiveMinutes",
+        "Lag1_LightlyActiveMinutes",
+        "Lag1_SedentaryMinutes",
+        "Lag1_Total_Active_Minutes",
+        "Lag1_Active_Minutes_Pct",
+        "Lag1_Very_Active_Pct",
+        "Lag1_METs_Avg",
+        "Lag1_METs_Max",
+        "Lag1_Hourly_Avg_Intensity",
+        "Lag1_Hourly_Steps_Avg",
+        "Lag1_Minute_Intensity_Avg",
+        "Lag1_Minute_Active_Step_Minutes",
+        "Lag1_Sleep_Minutes",
+        "Lag1_Time_In_Bed_Minutes",
+        "Lag1_Sleep_Efficiency_Pct",
+        "Lag1_Calories",
+        "Target_Day_Of_Week_Num",
+        "Target_Is_Weekend"
+      ],
+      "detail": "Persisted artifact feature contract matches the predictive registry."
+    },
+    {
+      "name": "target_contract:activity_target",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": "Meets_10k_Steps",
+      "threshold": "Meets_10k_Steps",
+      "detail": "Persisted target matches the registry."
+    },
+    {
+      "name": "artifact_load:activity_target",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": "C:\\Labmentix Projects\\Strava Fitness App Project\\models\\predictive_models\\activity_target\\model.joblib",
+      "threshold": "loadable joblib",
+      "detail": "Persisted model artifact loaded successfully."
+    },
+    {
+      "name": "feature_contract:sleep_target",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": [
+        "Lag1_TotalSteps",
+        "Lag1_TotalDistance",
+        "Lag1_VeryActiveMinutes",
+        "Lag1_FairlyActiveMinutes",
+        "Lag1_LightlyActiveMinutes",
+        "Lag1_SedentaryMinutes",
+        "Lag1_Total_Active_Minutes",
+        "Lag1_Active_Minutes_Pct",
+        "Lag1_Very_Active_Pct",
+        "Lag1_METs_Avg",
+        "Lag1_METs_Max",
+        "Lag1_Hourly_Avg_Intensity",
+        "Lag1_Hourly_Steps_Avg",
+        "Lag1_Minute_Intensity_Avg",
+        "Lag1_Minute_Active_Step_Minutes",
+        "Lag1_Sleep_Minutes",
+        "Lag1_Time_In_Bed_Minutes",
+        "Lag1_Sleep_Efficiency_Pct",
+        "Lag1_Calories",
+        "Target_Day_Of_Week_Num",
+        "Target_Is_Weekend"
+      ],
+      "threshold": [
+        "Lag1_TotalSteps",
+        "Lag1_TotalDistance",
+        "Lag1_VeryActiveMinutes",
+        "Lag1_FairlyActiveMinutes",
+        "Lag1_LightlyActiveMinutes",
+        "Lag1_SedentaryMinutes",
+        "Lag1_Total_Active_Minutes",
+        "Lag1_Active_Minutes_Pct",
+        "Lag1_Very_Active_Pct",
+        "Lag1_METs_Avg",
+        "Lag1_METs_Max",
+        "Lag1_Hourly_Avg_Intensity",
+        "Lag1_Hourly_Steps_Avg",
+        "Lag1_Minute_Intensity_Avg",
+        "Lag1_Minute_Active_Step_Minutes",
+        "Lag1_Sleep_Minutes",
+        "Lag1_Time_In_Bed_Minutes",
+        "Lag1_Sleep_Efficiency_Pct",
+        "Lag1_Calories",
+        "Target_Day_Of_Week_Num",
+        "Target_Is_Weekend"
+      ],
+      "detail": "Persisted artifact feature contract matches the predictive registry."
+    },
+    {
+      "name": "target_contract:sleep_target",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": "Sleep_7h_Target",
+      "threshold": "Sleep_7h_Target",
+      "detail": "Persisted target matches the registry."
+    },
+    {
+      "name": "artifact_load:sleep_target",
+      "status": "PASS",
+      "severity": "INFO",
+      "value": "C:\\Labmentix Projects\\Strava Fitness App Project\\models\\predictive_models\\sleep_target\\model.joblib",
+      "threshold": "loadable joblib",
+      "detail": "Persisted model artifact loaded successfully."
+    }
+  ]
+}

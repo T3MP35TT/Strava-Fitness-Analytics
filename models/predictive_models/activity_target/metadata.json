@@ -1,0 +1,310 @@
+{
+  "schema_version": 2,
+  "model_version": "activity_target-20260925-224329",
+  "target_key": "activity_target",
+  "display_name": "Next-Day 10K Step Target",
+  "question": "Is this participant likely to reach 10,000 steps tomorrow?",
+  "target": "Meets_10k_Steps",
+  "target_type": "classification",
+  "problem_type": "classification",
+  "algorithm": "Logistic Regression",
+  "forecast_horizon": "next participant-day",
+  "feature_policy": "current participant-day measurements as one-day lag to target",
+  "feature_columns": [
+    "Lag1_TotalSteps",
+    "Lag1_TotalDistance",
+    "Lag1_VeryActiveMinutes",
+    "Lag1_FairlyActiveMinutes",
+    "Lag1_LightlyActiveMinutes",
+    "Lag1_SedentaryMinutes",
+    "Lag1_Total_Active_Minutes",
+    "Lag1_Active_Minutes_Pct",
+    "Lag1_Very_Active_Pct",
+    "Lag1_METs_Avg",
+    "Lag1_METs_Max",
+    "Lag1_Hourly_Avg_Intensity",
+    "Lag1_Hourly_Steps_Avg",
+    "Lag1_Minute_Intensity_Avg",
+    "Lag1_Minute_Active_Step_Minutes",
+    "Lag1_Sleep_Minutes",
+    "Lag1_Time_In_Bed_Minutes",
+    "Lag1_Sleep_Efficiency_Pct",
+    "Lag1_Calories",
+    "Target_Day_Of_Week_Num",
+    "Target_Is_Weekend"
+  ],
+  "features": [
+    "Lag1_TotalSteps",
+    "Lag1_TotalDistance",
+    "Lag1_VeryActiveMinutes",
+    "Lag1_FairlyActiveMinutes",
+    "Lag1_LightlyActiveMinutes",
+    "Lag1_SedentaryMinutes",
+    "Lag1_Total_Active_Minutes",
+    "Lag1_Active_Minutes_Pct",
+    "Lag1_Very_Active_Pct",
+    "Lag1_METs_Avg",
+    "Lag1_METs_Max",
+    "Lag1_Hourly_Avg_Intensity",
+    "Lag1_Hourly_Steps_Avg",
+    "Lag1_Minute_Intensity_Avg",
+    "Lag1_Minute_Active_Step_Minutes",
+    "Lag1_Sleep_Minutes",
+    "Lag1_Time_In_Bed_Minutes",
+    "Lag1_Sleep_Efficiency_Pct",
+    "Lag1_Calories",
+    "Target_Day_Of_Week_Num",
+    "Target_Is_Weekend"
+  ],
+  "leakage_columns_excluded": [
+    "Calories",
+    "Hourly_Calories_Avg",
+    "Hourly_Calories_Total",
+    "Meets_10k_Steps",
+    "Minute_Calories_Avg",
+    "Minute_Calories_Total",
+    "Sleep_7h_Target"
+  ],
+  "source_rows": 940,
+  "forecast_rows": 907,
+  "training_rows": 753,
+  "holdout_rows": 154,
+  "training_start": "2016-04-13",
+  "training_end": "2016-05-06",
+  "holdout_start": "2016-05-07",
+  "holdout_end": "2016-05-12",
+  "holdout_target_start": "2016-05-07",
+  "holdout_target_end": "2016-05-12",
+  "selected_metrics": {
+    "Accuracy": 0.7987012987012987,
+    "Precision": 0.5901639344262295,
+    "Recall": 0.8571428571428571,
+    "F1": 0.6990291262135923,
+    "ROC_AUC": 0.9081632653061225
+  },
+  "selected_holdout_metrics": {
+    "Accuracy": 0.7987012987012987,
+    "Precision": 0.5901639344262295,
+    "Recall": 0.8571428571428571,
+    "F1": 0.6990291262135923,
+    "ROC_AUC": 0.9081632653061225
+  },
+  "candidate_metrics": {
+    "Logistic Regression": {
+      "Accuracy": 0.7987012987012987,
+      "Precision": 0.5901639344262295,
+      "Recall": 0.8571428571428571,
+      "F1": 0.6990291262135923,
+      "ROC_AUC": 0.9081632653061225
+    },
+    "Random Forest": {
+      "Accuracy": 0.7922077922077922,
+      "Precision": 0.5925925925925926,
+      "Recall": 0.7619047619047619,
+      "F1": 0.6666666666666666,
+      "ROC_AUC": 0.8543792517006803
+    }
+  },
+  "model_comparison": [
+    {
+      "algorithm": "Logistic Regression",
+      "metrics": {
+        "Accuracy": 0.7987012987012987,
+        "Precision": 0.5901639344262295,
+        "Recall": 0.8571428571428571,
+        "F1": 0.6990291262135923,
+        "ROC_AUC": 0.9081632653061225
+      },
+      "status": "OK"
+    },
+    {
+      "algorithm": "Random Forest",
+      "metrics": {
+        "Accuracy": 0.7922077922077922,
+        "Precision": 0.5925925925925926,
+        "Recall": 0.7619047619047619,
+        "F1": 0.6666666666666666,
+        "ROC_AUC": 0.8543792517006803
+      },
+      "status": "OK"
+    }
+  ],
+  "candidate_evaluations": [
+    {
+      "algorithm": "Logistic Regression",
+      "metrics": {
+        "Accuracy": 0.7987012987012987,
+        "Precision": 0.5901639344262295,
+        "Recall": 0.8571428571428571,
+        "F1": 0.6990291262135923,
+        "ROC_AUC": 0.9081632653061225
+      },
+      "status": "OK"
+    },
+    {
+      "algorithm": "Random Forest",
+      "metrics": {
+        "Accuracy": 0.7922077922077922,
+        "Precision": 0.5925925925925926,
+        "Recall": 0.7619047619047619,
+        "F1": 0.6666666666666666,
+        "ROC_AUC": 0.8543792517006803
+      },
+      "status": "OK"
+    }
+  ],
+  "backtest_rows": 100,
+  "backtest_start": "2016-05-08",
+  "backtest_end": "2016-05-12",
+  "backtest_method": "expanding-window walk-forward",
+  "backtest_metrics": {
+    "Accuracy": 0.77,
+    "Precision": 0.5555555555555556,
+    "Recall": 0.8928571428571429,
+    "F1": 0.684931506849315,
+    "ROC_AUC": 0.876984126984127
+  },
+  "rolling_validation": [
+    {
+      "Fold": 1,
+      "Algorithm": "Logistic Regression",
+      "Status": "OK",
+      "Accuracy": 0.75,
+      "Precision": 0.6666666666666666,
+      "Recall": 0.6938775510204082,
+      "F1": 0.68,
+      "ROC_AUC": 0.7773185223456471
+    },
+    {
+      "Fold": 1,
+      "Algorithm": "Random Forest",
+      "Status": "OK",
+      "Accuracy": 0.796875,
+      "Precision": 0.7346938775510204,
+      "Recall": 0.7346938775510204,
+      "F1": 0.7346938775510204,
+      "ROC_AUC": 0.811676569361922
+    },
+    {
+      "Fold": 2,
+      "Algorithm": "Logistic Regression",
+      "Status": "OK",
+      "Accuracy": 0.765625,
+      "Precision": 0.5918367346938775,
+      "Recall": 0.7435897435897436,
+      "F1": 0.6590909090909091,
+      "ROC_AUC": 0.8308844713339095
+    },
+    {
+      "Fold": 2,
+      "Algorithm": "Random Forest",
+      "Status": "OK",
+      "Accuracy": 0.765625,
+      "Precision": 0.5957446808510638,
+      "Recall": 0.717948717948718,
+      "F1": 0.6511627906976745,
+      "ROC_AUC": 0.8160472486315182
+    },
+    {
+      "Fold": 3,
+      "Algorithm": "Logistic Regression",
+      "Status": "OK",
+      "Accuracy": 0.8125,
+      "Precision": 0.68,
+      "Recall": 0.8095238095238095,
+      "F1": 0.7391304347826086,
+      "ROC_AUC": 0.8773532668881506
+    },
+    {
+      "Fold": 3,
+      "Algorithm": "Random Forest",
+      "Status": "OK",
+      "Accuracy": 0.8359375,
+      "Precision": 0.723404255319149,
+      "Recall": 0.8095238095238095,
+      "F1": 0.7640449438202247,
+      "ROC_AUC": 0.8884274640088593
+    },
+    {
+      "Fold": 4,
+      "Algorithm": "Logistic Regression",
+      "Status": "OK",
+      "Accuracy": 0.7899159663865546,
+      "Precision": 0.6739130434782609,
+      "Recall": 0.7560975609756098,
+      "F1": 0.7126436781609196,
+      "ROC_AUC": 0.8223889931207005
+    },
+    {
+      "Fold": 4,
+      "Algorithm": "Random Forest",
+      "Status": "OK",
+      "Accuracy": 0.7647058823529411,
+      "Precision": 0.6585365853658537,
+      "Recall": 0.6585365853658537,
+      "F1": 0.6585365853658537,
+      "ROC_AUC": 0.8383364602876797
+    },
+    {
+      "Fold": 5,
+      "Algorithm": "Logistic Regression",
+      "Status": "OK",
+      "Accuracy": 0.7586206896551724,
+      "Precision": 0.6078431372549019,
+      "Recall": 0.7948717948717948,
+      "F1": 0.6888888888888889,
+      "ROC_AUC": 0.8334998334998335
+    },
+    {
+      "Fold": 5,
+      "Algorithm": "Random Forest",
+      "Status": "OK",
+      "Accuracy": 0.75,
+      "Precision": 0.6041666666666666,
+      "Recall": 0.7435897435897436,
+      "F1": 0.6666666666666666,
+      "ROC_AUC": 0.8195138195138195
+    }
+  ],
+  "rolling_validation_folds": [
+    {
+      "Algorithm": "Logistic Regression",
+      "Accuracy": 0.7753323312083454,
+      "Precision": 0.6440519164187414,
+      "Recall": 0.7595920919962731,
+      "F1": 0.6959507821846652,
+      "ROC_AUC": 0.8282890174376483
+    },
+    {
+      "Algorithm": "Random Forest",
+      "Accuracy": 0.7826286764705882,
+      "Precision": 0.6633092131507506,
+      "Recall": 0.7328585467958291,
+      "F1": 0.6950209728202881,
+      "ROC_AUC": 0.8348003123607597
+    }
+  ],
+  "participant_holdout_metrics": {
+    "Accuracy": 0.7967914438502673,
+    "Precision": 0.6756756756756757,
+    "Recall": 0.78125,
+    "F1": 0.7246376811594203,
+    "ROC_AUC": 0.8474339430894309
+  },
+  "participant_holdout_algorithm": "Logistic Regression",
+  "participant_holdout_train_participants": 26,
+  "participant_holdout_test_participants": 7,
+  "participant_holdout_status": "OK",
+  "target_distribution_training": {
+    "0": 504,
+    "1": 249
+  },
+  "approval_status": "shadow",
+  "selection_method": "chronological holdout primary metric",
+  "production_fit": "refit on all available next-day observations",
+  "created_at": "2026-09-25T22:43:29.874420+00:00",
+  "holdout_predictions_path": "C:\\Labmentix Projects\\Strava Fitness App Project\\models\\predictive_models\\activity_target\\holdout_predictions.csv",
+  "backtest_predictions_path": "C:\\Labmentix Projects\\Strava Fitness App Project\\models\\predictive_models\\activity_target\\walk_forward_predictions.csv",
+  "rolling_validation_path": "C:\\Labmentix Projects\\Strava Fitness App Project\\models\\predictive_models\\activity_target\\rolling_validation.csv",
+  "rolling_validation_summary_path": "C:\\Labmentix Projects\\Strava Fitness App Project\\models\\predictive_models\\activity_target\\rolling_validation_summary.csv"
+}

@@ -1,0 +1,4 @@
+timestamp_utc,observation_date,model_version,predicted,actual,error,error_ratio,prediction_status,drift_status,drift_feature,max_abs_z,operational_status,review_required,prediction_source
+2026-09-25T13:16:06.131372+00:00,2016-05-12,fitness-calories-20260925-131435,1213.5075901957405,1139.2857142857142,-74.22187591002626,0.4614403543434563,Within historical error,Input drift,Avg_Sedentary_Minutes,11.201872585874044,REVIEW REQUIRED,True,
+2026-09-25T13:30:22.638598+00:00,2016-05-12,fitness-calories-20260925-133013,1878.7543679225275,1139.2857142857142,-739.4686536368131,4.597306028396352,Review,Input drift,Avg_Sedentary_Minutes,11.201872585874044,REVIEW REQUIRED,True,chronological holdout
+2026-09-25T13:44:03.349112+00:00,2016-05-12,fitness-calories-20260925-134356,1878.7543679225273,1139.2857142857142,-739.4686536368131,4.597306028396352,Review,Input drift,Avg_Sedentary_Minutes,11.201872585874044,REVIEW REQUIRED,True,chronological holdout

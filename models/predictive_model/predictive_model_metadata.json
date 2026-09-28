@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "model_version": "fitness-calories-20260925-134356",
+  "trained_at_utc": "2026-09-25T13:43:56.980421+00:00",
+  "target": "Avg_Calories",
+  "features": [
+    "Avg_Steps",
+    "Avg_Active_Minutes",
+    "Avg_Sedentary_Minutes",
+    "Participants"
+  ],
+  "feature_labels": {
+    "Avg_Steps": "Average steps",
+    "Avg_Active_Minutes": "Active minutes",
+    "Avg_Sedentary_Minutes": "Sedentary minutes",
+    "Participants": "Participant volume"
+  },
+  "algorithm": "Linear Regression",
+  "dataset_rows": 31,
+  "training_rows": 24,
+  "training_start": "2016-04-12",
+  "training_end": "2016-05-05",
+  "holdout_rows": 7,
+  "holdout_start": "2016-05-06",
+  "holdout_end": "2016-05-12",
+  "dataset_start": "2016-04-12",
+  "dataset_end": "2016-05-12",
+  "split_ratio": 0.8,
+  "selected_metrics": {
+    "MAE": 160.8482552758745,
+    "RMSE": 287.859829370341,
+    "R\u00b2": 0.4910866399607636
+  },
+  "metrics": [
+    {
+      "Model": "Linear Regression",
+      "MAE": 160.8482552758745,
+      "RMSE": 287.859829370341,
+      "R\u00b2": 0.4910866399607636
+    },
+    {
+      "Model": "Random Forest",
+      "MAE": 217.72360136195604,
+      "RMSE": 423.8162709818243,
+      "R\u00b2": -0.10315611526183566
+    }
+  ],
+  "n_splits": 5,
+  "monitoring_rules": {
+    "warning_error_ratio": 1.25,
+    "review_error_ratio": 2.0,
+    "warning_drift_z": 1.75,
+    "review_drift_z": 2.5
+  },
+  "training_stats": {
+    "Avg_Steps": {
+      "mean": 7768.633111829502,
+      "std": 607.6788737035408,
+      "q01": 6490.786982758621,
+      "q99": 8719.102489224138
+    },
+    "Avg_Active_Minutes": {
+      "mean": 231.32028254071585,
+      "std": 16.454713482765996,
+      "q01": 196.6701875,
+      "q99": 264.1050504032258
+    },
+    "Avg_Sedentary_Minutes": {
+      "mean": 1007.0932362241716,
+      "std": 31.699453238912636,
+      "q01": 942.2604838709677,
+      "q99": 1058.63125
+    },
+    "Participants": {
+      "mean": 31.541666666666668,
+      "std": 1.2903218806001686,
+      "q01": 29.0,
+      "q99": 33.0
+    }
+  },
+  "approval_status": "shadow",
+  "approval_reason": "Newly trained artifact requires monitoring review before operational approval.",
+  "data_lineage_audit": {
+    "raw_rows": 940,
+    "required_columns_missing": [],
+    "invalid_dates": 0,
+    "numeric_invalid_counts": {
+      "TotalSteps": 0,
+      "Total_Active_Minutes": 0,
+      "SedentaryMinutes": 0,
+      "Calories": 0
+    },
+    "rows_after_complete_case_filter": 940,
+    "row_loss_from_complete_case_filter": 0,
+    "unique_dates_after_complete_case_filter": 31,
+    "daily_rows_before_feature_drop": 31,
+    "daily_rows_final": 31,
+    "daily_dates_removed_after_aggregation": 0,
+    "removed_daily_dates": [],
+    "feature_missing_by_date": {
+      "Avg_Steps": 0,
+      "Avg_Active_Minutes": 0,
+      "Avg_Sedentary_Minutes": 0,
+      "Participants": 0,
+      "Avg_Calories": 0
+    },
+    "final_start": "2016-04-12",
+    "final_end": "2016-05-12"
+  }
+}

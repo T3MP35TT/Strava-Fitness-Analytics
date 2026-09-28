@@ -1,0 +1,267 @@
+{
+  "schema_version": 2,
+  "model_version": "calories-20260925-224326",
+  "target_key": "calories",
+  "display_name": "Next-Day Calorie Expenditure",
+  "question": "How many calories is this participant likely to expend tomorrow?",
+  "target": "Calories",
+  "target_type": "regression",
+  "problem_type": "regression",
+  "algorithm": "Random Forest",
+  "forecast_horizon": "next participant-day",
+  "feature_policy": "current participant-day measurements as one-day lag to target",
+  "feature_columns": [
+    "Lag1_TotalSteps",
+    "Lag1_TotalDistance",
+    "Lag1_VeryActiveMinutes",
+    "Lag1_FairlyActiveMinutes",
+    "Lag1_LightlyActiveMinutes",
+    "Lag1_SedentaryMinutes",
+    "Lag1_Total_Active_Minutes",
+    "Lag1_Active_Minutes_Pct",
+    "Lag1_Very_Active_Pct",
+    "Lag1_METs_Avg",
+    "Lag1_METs_Max",
+    "Lag1_Hourly_Avg_Intensity",
+    "Lag1_Hourly_Steps_Avg",
+    "Lag1_Minute_Intensity_Avg",
+    "Lag1_Minute_Active_Step_Minutes",
+    "Lag1_Sleep_Minutes",
+    "Lag1_Time_In_Bed_Minutes",
+    "Lag1_Sleep_Efficiency_Pct",
+    "Lag1_Calories",
+    "Target_Day_Of_Week_Num",
+    "Target_Is_Weekend"
+  ],
+  "features": [
+    "Lag1_TotalSteps",
+    "Lag1_TotalDistance",
+    "Lag1_VeryActiveMinutes",
+    "Lag1_FairlyActiveMinutes",
+    "Lag1_LightlyActiveMinutes",
+    "Lag1_SedentaryMinutes",
+    "Lag1_Total_Active_Minutes",
+    "Lag1_Active_Minutes_Pct",
+    "Lag1_Very_Active_Pct",
+    "Lag1_METs_Avg",
+    "Lag1_METs_Max",
+    "Lag1_Hourly_Avg_Intensity",
+    "Lag1_Hourly_Steps_Avg",
+    "Lag1_Minute_Intensity_Avg",
+    "Lag1_Minute_Active_Step_Minutes",
+    "Lag1_Sleep_Minutes",
+    "Lag1_Time_In_Bed_Minutes",
+    "Lag1_Sleep_Efficiency_Pct",
+    "Lag1_Calories",
+    "Target_Day_Of_Week_Num",
+    "Target_Is_Weekend"
+  ],
+  "leakage_columns_excluded": [
+    "Calories",
+    "Hourly_Calories_Avg",
+    "Hourly_Calories_Total",
+    "Meets_10k_Steps",
+    "Minute_Calories_Avg",
+    "Minute_Calories_Total",
+    "Sleep_7h_Target"
+  ],
+  "source_rows": 940,
+  "forecast_rows": 907,
+  "training_rows": 753,
+  "holdout_rows": 154,
+  "training_start": "2016-04-13",
+  "training_end": "2016-05-06",
+  "holdout_start": "2016-05-07",
+  "holdout_end": "2016-05-12",
+  "holdout_target_start": "2016-05-07",
+  "holdout_target_end": "2016-05-12",
+  "selected_metrics": {
+    "MAE": 469.21218332302357,
+    "RMSE": 725.3620348056064,
+    "R2": 0.2961076522043181
+  },
+  "selected_holdout_metrics": {
+    "MAE": 469.21218332302357,
+    "RMSE": 725.3620348056064,
+    "R2": 0.2961076522043181
+  },
+  "candidate_metrics": {
+    "Linear Regression": {
+      "MAE": 471.28000245155584,
+      "RMSE": 713.5785046633009,
+      "R2": 0.3187914029826453
+    },
+    "Random Forest": {
+      "MAE": 469.21218332302357,
+      "RMSE": 725.3620348056064,
+      "R2": 0.2961076522043181
+    }
+  },
+  "model_comparison": [
+    {
+      "algorithm": "Linear Regression",
+      "metrics": {
+        "MAE": 471.28000245155584,
+        "RMSE": 713.5785046633009,
+        "R2": 0.3187914029826453
+      },
+      "status": "OK"
+    },
+    {
+      "algorithm": "Random Forest",
+      "metrics": {
+        "MAE": 469.21218332302357,
+        "RMSE": 725.3620348056064,
+        "R2": 0.2961076522043181
+      },
+      "status": "OK"
+    }
+  ],
+  "candidate_evaluations": [
+    {
+      "algorithm": "Linear Regression",
+      "metrics": {
+        "MAE": 471.28000245155584,
+        "RMSE": 713.5785046633009,
+        "R2": 0.3187914029826453
+      },
+      "status": "OK"
+    },
+    {
+      "algorithm": "Random Forest",
+      "metrics": {
+        "MAE": 469.21218332302357,
+        "RMSE": 725.3620348056064,
+        "R2": 0.2961076522043181
+      },
+      "status": "OK"
+    }
+  ],
+  "backtest_rows": 100,
+  "backtest_start": "2016-05-08",
+  "backtest_end": "2016-05-12",
+  "backtest_method": "expanding-window walk-forward",
+  "backtest_metrics": {
+    "MAE": 517.7366541456936,
+    "RMSE": 779.5029816765901,
+    "R2": 0.21849268573302105
+  },
+  "rolling_validation": [
+    {
+      "Fold": 1,
+      "Algorithm": "Linear Regression",
+      "Status": "OK",
+      "MAE": 341.5642775110907,
+      "RMSE": 497.26035870314,
+      "R2": 0.516034001532429
+    },
+    {
+      "Fold": 1,
+      "Algorithm": "Random Forest",
+      "Status": "OK",
+      "MAE": 292.1417622585747,
+      "RMSE": 465.09967349639,
+      "R2": 0.5766113199157565
+    },
+    {
+      "Fold": 2,
+      "Algorithm": "Linear Regression",
+      "Status": "OK",
+      "MAE": 311.10168987028226,
+      "RMSE": 476.5830498755473,
+      "R2": 0.477984974936416
+    },
+    {
+      "Fold": 2,
+      "Algorithm": "Random Forest",
+      "Status": "OK",
+      "MAE": 319.1168567369449,
+      "RMSE": 444.6929628313073,
+      "R2": 0.5455079061829822
+    },
+    {
+      "Fold": 3,
+      "Algorithm": "Linear Regression",
+      "Status": "OK",
+      "MAE": 247.33446864255518,
+      "RMSE": 339.9402402947197,
+      "R2": 0.683179522289804
+    },
+    {
+      "Fold": 3,
+      "Algorithm": "Random Forest",
+      "Status": "OK",
+      "MAE": 240.18743320258355,
+      "RMSE": 349.85876255733416,
+      "R2": 0.66442190697428
+    },
+    {
+      "Fold": 4,
+      "Algorithm": "Linear Regression",
+      "Status": "OK",
+      "MAE": 327.6160925189937,
+      "RMSE": 481.5125467781931,
+      "R2": 0.5427071754587728
+    },
+    {
+      "Fold": 4,
+      "Algorithm": "Random Forest",
+      "Status": "OK",
+      "MAE": 323.0301872529261,
+      "RMSE": 472.0790613458129,
+      "R2": 0.5604496329924006
+    },
+    {
+      "Fold": 5,
+      "Algorithm": "Linear Regression",
+      "Status": "OK",
+      "MAE": 309.5904970270081,
+      "RMSE": 463.6580274841112,
+      "R2": 0.5783124599808006
+    },
+    {
+      "Fold": 5,
+      "Algorithm": "Random Forest",
+      "Status": "OK",
+      "MAE": 326.6970059913254,
+      "RMSE": 482.6938043405118,
+      "R2": 0.5429763746931611
+    }
+  ],
+  "rolling_validation_folds": [
+    {
+      "Algorithm": "Linear Regression",
+      "MAE": 307.441405113986,
+      "RMSE": 451.7908446271423,
+      "R2": 0.5596436268396445
+    },
+    {
+      "Algorithm": "Random Forest",
+      "MAE": 300.234649088471,
+      "RMSE": 442.8848529142712,
+      "R2": 0.5779934281517161
+    }
+  ],
+  "participant_holdout_metrics": {
+    "MAE": 334.10700606078177,
+    "RMSE": 476.32783532110886,
+    "R2": 0.5524568301566626
+  },
+  "participant_holdout_algorithm": "Random Forest",
+  "participant_holdout_train_participants": 26,
+  "participant_holdout_test_participants": 7,
+  "participant_holdout_status": "OK",
+  "target_distribution_training": {
+    "min": 0.0,
+    "max": 4900.0,
+    "mean": 2339.512616201859
+  },
+  "approval_status": "shadow",
+  "selection_method": "chronological holdout primary metric",
+  "production_fit": "refit on all available next-day observations",
+  "created_at": "2026-09-25T22:43:26.175651+00:00",
+  "holdout_predictions_path": "C:\\Labmentix Projects\\Strava Fitness App Project\\models\\predictive_models\\calories\\holdout_predictions.csv",
+  "backtest_predictions_path": "C:\\Labmentix Projects\\Strava Fitness App Project\\models\\predictive_models\\calories\\walk_forward_predictions.csv",
+  "rolling_validation_path": "C:\\Labmentix Projects\\Strava Fitness App Project\\models\\predictive_models\\calories\\rolling_validation.csv",
+  "rolling_validation_summary_path": "C:\\Labmentix Projects\\Strava Fitness App Project\\models\\predictive_models\\calories\\rolling_validation_summary.csv"
+}

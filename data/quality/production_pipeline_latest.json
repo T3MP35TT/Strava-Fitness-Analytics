@@ -1,0 +1,91 @@
+{
+  "run_id": "20260925T224311Z",
+  "started_at_utc": "2026-09-25T22:43:11.056313+00:00",
+  "status": "SUCCESS",
+  "options": {
+    "skip_training": false,
+    "skip_monitoring": false,
+    "ci": false
+  },
+  "steps": [
+    {
+      "name": "data_quality",
+      "status": "SUCCESS",
+      "return_code": 0,
+      "duration_seconds": 1.916,
+      "command": [
+        "C:\\Labmentix Projects\\Strava Fitness App Project\\.venv\\Scripts\\python.exe",
+        "scripts/run_data_quality_gate.py"
+      ],
+      "stdout": "\n========================================================================\nPREDICTIVE DATA QUALITY GATE\n========================================================================\nOverall status: WARN\nRows: 940\nParticipants: 33\nChecks: 78\nPassed: 75\nWarnings: 3\nFailures: 0\n\nCHECK RESULTS\n------------------------------------------------------------------------\n[PASS] dataset_non_empty\n[PASS] required_schema\n[PASS] valid_dates\n[PASS] valid_participant_ids\n[PASS] participant_day_duplicates\n[PASS] future_dates\n[PASS] participant_date_continuity\n[PASS] numeric_validity:Active_Minutes_Pct\n[PASS] numeric_validity:Calories\n[PASS] numeric_validity:FairlyActiveMinutes\n[PASS] numeric_validity:Hourly_Avg_Intensity\n[PASS] numeric_validity:Hourly_Steps_Avg\n[PASS] numeric_validity:LightlyActiveMinutes\n[PASS] numeric_validity:METs_Avg\n[PASS] numeric_validity:METs_Max\n[PASS] numeric_validity:Minute_Active_Step_Minutes\n[PASS] numeric_validity:Minute_Intensity_Avg\n[PASS] numeric_validity:SedentaryMinutes\n[PASS] numeric_validity:Sleep_Efficiency_Pct\n[PASS] numeric_validity:Sleep_Minutes\n[PASS] numeric_validity:Time_In_Bed_Minutes\n[PASS] numeric_validity:TotalDistance\n[PASS] numeric_validity:TotalSteps\n[PASS] numeric_validity:Total_Active_Minutes\n[PASS] numeric_validity:TrackerDistance\n[PASS] numeric_validity:VeryActiveMinutes\n[PASS] numeric_validity:Very_Active_Pct\n[PASS] missingness:Active_Minutes_Pct\n[PASS] missingness:Calories\n[PASS] missingness:FairlyActiveMinutes\n[PASS] missingness:Hourly_Avg_Intensity\n[PASS] missingness:Hourly_Steps_Avg\n[PASS] missingness:LightlyActiveMinutes\n[PASS] missingness:METs_Avg\n[PASS] missingness:METs_Max\n[PASS] missingness:Minute_Active_Step_Minutes\n[PASS] missingness:Minute_Intensity_Avg\n[PASS] missingness:SedentaryMinutes\n[WARN] missingness:Sleep_Efficiency_Pct\n       Sleep_Efficiency_Pct missingness is 56.4%. The model pipeline handles this field with median imputation.\n[WARN] missingness:Sleep_Minutes\n       Sleep_Minutes missingness is 56.4%. The model pipeline handles this field with median imputation.\n[WARN] missingness:Time_In_Bed_Minutes\n       Time_In_Bed_Minutes missingness is 56.4%. The model pipeline handles this field with median imputation.\n[PASS] missingness:TotalDistance\n[PASS] missingness:TotalSteps\n[PASS] missingness:Total_Active_Minutes\n[PASS] missingness:VeryActiveMinutes\n[PASS] missingness:Very_Active_Pct\n[PASS] non_negative:TotalSteps\n[PASS] non_negative:TotalDistance\n[PASS] non_negative:TrackerDistance\n[PASS] non_negative:Calories\n[PASS] non_negative:VeryActiveMinutes\n[PASS] non_negative:FairlyActiveMinutes\n[PASS] non_negative:LightlyActiveMinutes\n[PASS] non_negative:Total_Active_Minutes\n[PASS] non_negative:Sleep_Minutes\n[PASS] non_negative:Time_In_Bed_Minutes\n[PASS] non_negative:METs_Avg\n[PASS] non_negative:METs_Max\n[PASS] non_negative:Hourly_Avg_Intensity\n[PASS] non_negative:Hourly_Steps_Avg\n[PASS] non_negative:Minute_Intensity_Avg\n[PASS] non_negative:Minute_Active_Step_Minutes\n[PASS] percent_range:Active_Minutes_Pct\n[PASS] percent_range:Very_Active_Pct\n[PASS] percent_range:Sleep_Efficiency_Pct\n[PASS] class_values:activity_target\n[PASS] class_balance:activity_target\n[PASS] class_values:sleep_target\n[PASS] class_balance:sleep_target\n[PASS] feature_contract:calories\n[PASS] target_contract:calories\n[PASS] artifact_load:calories\n[PASS] feature_contract:activity_target\n[PASS] target_contract:activity_target\n[PASS] artifact_load:activity_target\n[PASS] feature_contract:sleep_target\n[PASS] target_contract:sleep_target\n[PASS] artifact_load:sleep_target\n\nQuality report: C:\\Labmentix Projects\\Strava Fitness App Project\\data\\quality\\data_quality_report.json\n\nQUALITY GATE PASSED WITH WARNINGS.\n",
+      "stderr": ""
+    },
+    {
+      "name": "training",
+      "status": "SUCCESS",
+      "return_code": 0,
+      "duration_seconds": 20.415,
+      "command": [
+        "C:\\Labmentix Projects\\Strava Fitness App Project\\.venv\\Scripts\\python.exe",
+        "scripts/train_predictive_model.py"
+      ],
+      "stdout": "Loading canonical dataset: C:\\Labmentix Projects\\Strava Fitness App Project\\data\\processed\\fitness_daily_master.csv\n\nMULTI-TARGET PREDICTIVE TRAINING\n--------------------------------\nSource rows: 940\nParticipants: 33\nDate range: 2016-04-12 \u2192 2016-05-12\n\n========================================================================\n[1/3] STARTING: NEXT-DAY CALORIE EXPENDITURE\nTarget: Calories\nProblem type: regression\nConfigured minimum rows: 100\nTraining may take a little time...\n========================================================================\nBuilding next-day dataset...\n  Evaluating Linear Regression...\n  Evaluating Random Forest...\nTraining completed. Saving artifact...\n\n========================================================================\nNEXT-DAY CALORIE EXPENDITURE\n========================================================================\nQuestion: How many calories is this participant likely to expend tomorrow?\nSelected algorithm: Random Forest\nForecast horizon: next participant-day\n\nDATA\n----\nSource rows: 940\nForecast rows: 907\nTraining rows: 753\nHoldout rows: 154\nTraining target period: 2016-04-13 \u2192 2016-05-06\nHoldout target period: 2016-05-07 \u2192 2016-05-12\n\nMODEL COMPARISON\n----------------\nLinear Regression: MAE=471.2800 | RMSE=713.5785 | R2=0.3188\nRandom Forest: MAE=469.2122 | RMSE=725.3620 | R2=0.2961\n\nSELECTED MODEL\n--------------\nAlgorithm: Random Forest\nSelected holdout metrics:\n  MAE: 469.2122\n  RMSE: 725.3620\n  R2: 0.2961\n\nWALK-FORWARD BACKTEST\n---------------------\nBacktest rows: 100\nBacktest period: 2016-05-08 \u2192 2016-05-12\nMethod: expanding-window walk-forward\nBacktest predictions: C:\\Labmentix Projects\\Strava Fitness App Project\\models\\predictive_models\\calories\\walk_forward_predictions.csv\n\nNEXT-DAY FORECAST\n-----------------\nLatest forecast will be generated by the prediction layer.\n\nApproval status: shadow\nNote: shadow refers to the model lifecycle state. The dashboard may use the model for analytical forecasting, but the artifact is not represented as an autonomous clinical or operational decision system.\n\nArtifact: C:\\Labmentix Projects\\Strava Fitness App Project\\models\\predictive_models\\calories\\model.joblib\nTarget elapsed time: 11.8s\n\n========================================================================\n[2/3] STARTING: NEXT-DAY 10K STEP TARGET\nTarget: Meets_10k_Steps\nProblem type: classification\nConfigured minimum rows: 100\nTraining may take a little time...\n========================================================================\nBuilding next-day dataset...\n  Evaluating Logistic Regression...\n  Evaluating Random Forest...\nTraining completed. Saving artifact...\n\n========================================================================\nNEXT-DAY 10K STEP TARGET\n========================================================================\nQuestion: Is this participant likely to reach 10,000 steps tomorrow?\nSelected algorithm: Logistic Regression\nForecast horizon: next participant-day\n\nDATA\n----\nSource rows: 940\nForecast rows: 907\nTraining rows: 753\nHoldout rows: 154\nTraining target period: 2016-04-13 \u2192 2016-05-06\nHoldout target period: 2016-05-07 \u2192 2016-05-12\n\nMODEL COMPARISON\n----------------\nLogistic Regression: Accuracy=0.7987 | Precision=0.5902 | Recall=0.8571 | F1=0.6990 | ROC_AUC=0.9082\nRandom Forest: Accuracy=0.7922 | Precision=0.5926 | Recall=0.7619 | F1=0.6667 | ROC_AUC=0.8544\n\nSELECTED MODEL\n--------------\nAlgorithm: Logistic Regression\nSelected holdout metrics:\n  Accuracy: 0.7987\n  Precision: 0.5902\n  Recall: 0.8571\n  F1: 0.6990\n  ROC_AUC: 0.9082\n\nWALK-FORWARD BACKTEST\n---------------------\nBacktest rows: 100\nBacktest period: 2016-05-08 \u2192 2016-05-12\nMethod: expanding-window walk-forward\nBacktest predictions: C:\\Labmentix Projects\\Strava Fitness App Project\\models\\predictive_models\\activity_target\\walk_forward_predictions.csv\n\nNEXT-DAY FORECAST\n-----------------\nLatest forecast will be generated by the prediction layer.\n\nApproval status: shadow\nNote: shadow refers to the model lifecycle state. The dashboard may use the model for analytical forecasting, but the artifact is not represented as an autonomous clinical or operational decision system.\n\nArtifact: C:\\Labmentix Projects\\Strava Fitness App Project\\models\\predictive_models\\activity_target\\model.joblib\nTarget elapsed time: 3.7s\n\n========================================================================\n[3/3] STARTING: NEXT-DAY 7-HOUR SLEEP TARGET\nTarget: Sleep_7h_Target\nProblem type: classification\nConfigured minimum rows: 100\nTraining may take a little time...\n========================================================================\nBuilding next-day dataset...\n  Evaluating Logistic Regression...\n  Evaluating Random Forest...\nTraining completed. Saving artifact...\n\n========================================================================\nNEXT-DAY 7-HOUR SLEEP TARGET\n========================================================================\nQuestion: Is this participant likely to achieve at least 7 hours of sleep tomorrow?\nSelected algorithm: Logistic Regression\nForecast horizon: next participant-day\n\nDATA\n----\nSource rows: 940\nForecast rows: 397\nTraining rows: 328\nHoldout rows: 69\nTraining target period: 2016-04-13 \u2192 2016-05-06\nHoldout target period: 2016-05-07 \u2192 2016-05-12\n\nMODEL COMPARISON\n----------------\nLogistic Regression: Accuracy=0.6667 | Precision=0.7174 | Recall=0.7674 | F1=0.7416 | ROC_AUC=0.6878\nRandom Forest: Accuracy=0.6522 | Precision=0.7436 | Recall=0.6744 | F1=0.7073 | ROC_AUC=0.6977\n\nSELECTED MODEL\n--------------\nAlgorithm: Logistic Regression\nSelected holdout metrics:\n  Accuracy: 0.6667\n  Precision: 0.7174\n  Recall: 0.7674\n  F1: 0.7416\n  ROC_AUC: 0.6878\n\nWALK-FORWARD BACKTEST\n---------------------\nBacktest rows: 100\nBacktest period: 2016-05-04 \u2192 2016-05-12\nMethod: expanding-window walk-forward\nBacktest predictions: C:\\Labmentix Projects\\Strava Fitness App Project\\models\\predictive_models\\sleep_target\\walk_forward_predictions.csv\n\nNEXT-DAY FORECAST\n-----------------\nLatest forecast will be generated by the prediction layer.\n\nApproval status: shadow\nNote: shadow refers to the model lifecycle state. The dashboard may use the model for analytical forecasting, but the artifact is not represented as an autonomous clinical or operational decision system.\n\nArtifact: C:\\Labmentix Projects\\Strava Fitness App Project\\models\\predictive_models\\sleep_target\\model.joblib\nTarget elapsed time: 3.3s\n\n========================================================================\nTRAINING SUMMARY\n========================================================================\ncalories: Random Forest | 753 train | 154 holdout | 100 backtest | shadow\nactivity_target: Logistic Regression | 753 train | 154 holdout | 100 backtest | shadow\nsleep_target: Logistic Regression | 328 train | 69 holdout | 100 backtest | shadow\n\nModel root: C:\\Labmentix Projects\\Strava Fitness App Project\\models\\predictive_models\nTotal training time: 18.8s\n",
+      "stderr": ""
+    },
+    {
+      "name": "predictions",
+      "status": "SUCCESS",
+      "return_code": 0,
+      "duration_seconds": 3.91,
+      "command": [
+        "C:\\Labmentix Projects\\Strava Fitness App Project\\.venv\\Scripts\\python.exe",
+        "scripts/run_predictive_predictions.py"
+      ],
+      "stdout": "Running predictive data-quality gate...\nQuality gate: WARN\nQuality gate passed with warnings. Routine prediction generation will continue.\n\nLoading canonical dataset...\nRows available: 940\nParticipants available: 33\n\nLoading persisted model artifacts...\n  calories: Random Forest | calories-20260925-224326\n  activity_target: Logistic Regression | activity_target-20260925-224329\n  sleep_target: Logistic Regression | sleep_target-20260925-224333\n\nValidating prediction inputs...\nPrediction inputs validated.\n\nGenerating participant-level predictions...\n\n========================================================================\nPREDICTION STORE CREATED\n========================================================================\nPrediction records: 33\nParticipants predicted: 33\nFeature dates: 2016-04-15 \u2192 2016-05-12\nTarget dates: 2016-04-16 \u2192 2016-05-13\n\nOutput: C:\\Labmentix Projects\\Strava Fitness App Project\\data\\processed\\predictions.csv\n\nPrediction generation completed successfully.\n",
+      "stderr": "2026-09-26 04:13:34.955 WARNING streamlit.runtime.caching.cache_data_api: No runtime found, using MemoryCacheStorageManager\n2026-09-26 04:13:36.001 WARNING streamlit.runtime.caching.cache_data_api: No runtime found, using MemoryCacheStorageManager\n2026-09-26 04:13:36.002 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n"
+    },
+    {
+      "name": "monitoring",
+      "status": "SUCCESS",
+      "return_code": 0,
+      "duration_seconds": 2.066,
+      "command": [
+        "C:\\Labmentix Projects\\Strava Fitness App Project\\.venv\\Scripts\\python.exe",
+        "scripts/run_predictive_monitoring.py",
+        "--model",
+        "all"
+      ],
+      "stdout": "Loading canonical dataset...\nRows available: 940\n\n========================================================================\nCALORIES\n========================================================================\nModel version: calories-20260925-224326\nAlgorithm: Random Forest\nFeature date: 2016-05-11\nTarget date: 2016-05-12\nParticipant: 8378563200\nPredicted: 3567.63\nActual: 1976.00\nPrediction status: Review\nDrift status: Within historical range\nMax drift: 1.58\u03c3\nOperational status: REVIEW REQUIRED\n\nACTION: Model review/revalidation is required.\n\n========================================================================\nACTIVITY_TARGET\n========================================================================\nModel version: activity_target-20260925-224329\nAlgorithm: Logistic Regression\nFeature date: 2016-05-11\nTarget date: 2016-05-12\nParticipant: 8378563200\nPredicted class: 0\nActual class: 0\nPositive probability: 0.2955\nPrediction status: Correct\nDrift status: Within historical range\nMax drift: 1.58\u03c3\nOperational status: MONITORING\n\n========================================================================\nSLEEP_TARGET\n========================================================================\nModel version: sleep_target-20260925-224333\nAlgorithm: Logistic Regression\nFeature date: 2016-05-11\nTarget date: 2016-05-12\nParticipant: 8378563200\nPredicted class: 0\nActual class: 1\nPositive probability: 0.2786\nPrediction status: Review\nDrift status: Within historical range\nMax drift: 1.51\u03c3\nOperational status: REVIEW REQUIRED\n\nACTION: Model review/revalidation is required.\n\n========================================================================\nMONITORING SUMMARY\n========================================================================\ncalories: REVIEW REQUIRED | Review | Within historical range\nactivity_target: MONITORING | Correct | Within historical range\nsleep_target: REVIEW REQUIRED | Review | Within historical range\n\nMonitoring log:\nC:\\Labmentix Projects\\Strava Fitness App Project\\models\\predictive_models\\monitoring_log.csv\n",
+      "stderr": ""
+    }
+  ],
+  "preflight": {
+    "status": "PASS",
+    "project_root": "C:\\Labmentix Projects\\Strava Fitness App Project",
+    "python": "C:\\Labmentix Projects\\Strava Fitness App Project\\.venv\\Scripts\\python.exe",
+    "dataset": "C:\\Labmentix Projects\\Strava Fitness App Project\\data\\processed\\fitness_daily_master.csv",
+    "dataset_bytes": 289632,
+    "model_root": "C:\\Labmentix Projects\\Strava Fitness App Project\\models\\predictive_models",
+    "ci": false,
+    "checked_at_utc": "2026-09-25T22:43:11.058114+00:00"
+  },
+  "outputs": {
+    "quality_report": {
+      "path": "C:\\Labmentix Projects\\Strava Fitness App Project\\data\\quality\\data_quality_report.json",
+      "exists": true,
+      "bytes": 24746
+    },
+    "prediction_store": {
+      "path": "C:\\Labmentix Projects\\Strava Fitness App Project\\data\\processed\\predictions.csv",
+      "exists": true,
+      "bytes": 7445
+    },
+    "monitoring_log": {
+      "path": "C:\\Labmentix Projects\\Strava Fitness App Project\\models\\predictive_models\\monitoring_log.csv",
+      "exists": true,
+      "bytes": 12682
+    }
+  },
+  "finished_at_utc": "2026-09-25T22:43:39.366685+00:00",
+  "duration_seconds": 28.310372
+}
