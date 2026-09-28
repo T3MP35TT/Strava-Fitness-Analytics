@@ -575,13 +575,6 @@ Each stage is independently auditable.
 
 ---
 
-## 📄 License
-
-This project is intended as a portfolio and learning project.
-Add the appropriate license (e.g., MIT) here if the repository will be distributed publicly.
-
----
-
 <div align="center">
 
 ⭐ If you found this project useful, consider giving it a star!
