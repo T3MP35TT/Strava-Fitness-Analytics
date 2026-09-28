@@ -1,449 +1,398 @@
-# Strava Fitness Analytics App
+<div align="center">
 
-An end-to-end **Data Analytics and Business Analytics portfolio project** that transforms multi-granular fitness activity data into an interactive decision-support application.
+# 🏃‍♂️ Strava Fitness Analytics App
 
-The project combines **data preparation, exploratory analysis, KPI reporting, statistical analysis, predictive modeling, SQL analytics, data quality controls, and business insight generation** in a single Streamlit application.
+### From raw fitness data to trusted metrics, predictive signals, and business decisions
 
-> **Purpose:** demonstrate how a Data Analyst / Business Analyst can move from raw operational data to trusted metrics, predictive signals, and business-oriented recommendations.
+![Python](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B?logo=streamlit&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-150458?logo=pandas&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-F7931E?logo=scikitlearn&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-Read--Only%20SQL-003B57?logo=sqlite&logoColor=white)
+![Plotly](https://img.shields.io/badge/Plotly-Visualization-3F4F75?logo=plotly&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Portfolio%20Project-success)
+
+**An end-to-end Data Analytics & Business Analytics portfolio project**
+combining data preparation, KPI reporting, statistics, predictive modeling, SQL analytics, data-quality controls, and business insights in one Streamlit application.
+
+</div>
 
 ---
 
-## Executive Summary
+## 📑 Table of Contents
 
-Fitness activity data is often fragmented across daily, hourly, and minute-level records. A business-facing analytics solution needs more than charts: it needs a consistent data model, defined KPIs, quality checks, analytical workflows, and a clear path from findings to decisions.
-
-This project addresses that problem through a structured analytics pipeline:
-
-**Raw Data → Data Preparation → Analytical Dataset → KPI Reporting → Statistical Analysis → Predictive Insights → SQL Analysis → Business Insights**
-
-The resulting Streamlit application provides an interactive environment for exploring participant behavior, activity patterns, calorie expenditure, sleep and wellness indicators, predictive outputs, and business questions.
+- [📌 Executive Summary](#-executive-summary)
+- [🎯 Business Problem & Objectives](#-business-problem--objectives)
+- [🖥️ Application Pages](#️-application-pages)
+- [❓ Key Analytical Questions](#-key-analytical-questions)
+- [🔄 Analytics Workflow](#-analytics-workflow)
+- [🧹 Data Quality](#-data-quality)
+- [🤖 Predictive Analytics](#-predictive-analytics)
+- [📡 Prediction Monitoring](#-prediction-monitoring)
+- [⚙️ Production-Style Pipeline](#️-production-style-pipeline)
+- [🗄️ SQL Analytics Playground](#️-sql-analytics-playground)
+- [💡 Business Insights](#-business-insights)
+- [🗂️ Project Architecture](#️-project-architecture)
+- [🧰 Technology Stack](#-technology-stack)
+- [🚀 Getting Started](#-getting-started)
+- [🔁 Reproducing the Pipeline](#-reproducing-the-pipeline)
+- [🏛️ Analytical Governance](#️-analytical-governance)
+- [⚠️ Limitations](#️-limitations)
+- [🏆 What This Project Demonstrates](#-what-this-project-demonstrates)
+- [🎤 Portfolio Talking Points](#-portfolio-talking-points)
+- [📄 License](#-license)
 
 ---
 
-## Business Problem
+## 📌 Executive Summary
 
-A fitness analytics business may want to understand:
+Fitness activity data is usually fragmented across **daily, hourly, and minute-level** records. A business-ready analytics solution needs more than charts: it needs a consistent data model, defined KPIs, quality checks, reproducible workflows, and a clear path from findings to decisions.
+
+This project delivers that through a structured analytics pipeline:
+
+```mermaid
+flowchart LR
+    A[📥 Raw Data] --> B[🧹 Data Preparation]
+    B --> C[📦 Analytical Dataset]
+    C --> D[📊 KPI Reporting]
+    C --> E[📐 Statistical Analysis]
+    C --> F[🤖 Predictive Models]
+    C --> G[🗄️ SQL Analysis]
+    D --> H[💡 Business Insights]
+    E --> H
+    F --> H
+    G --> H
+    F --> I[📡 Monitoring]
+```
+
+The Streamlit app gives stakeholders an interactive space to explore participant behavior, activity patterns, calorie expenditure, sleep and wellness indicators, predictive outputs, and business questions.
+
+> 🎯 **Purpose:** demonstrate how a Data Analyst / Business Analyst moves from raw operational data to trusted metrics, predictive signals, and business-oriented recommendations.
+
+---
+
+## 🎯 Business Problem & Objectives
+
+### 🧩 The Problem
+
+A fitness analytics business wants to understand:
 
 - How active are participants over time?
 - What drives differences in daily activity and calorie expenditure?
-- Which participants or behavioral patterns require attention?
-- How are sleep and wellness related to activity behavior?
-- Can historical activity patterns support next-day predictions?
-- Which findings are useful for product, engagement, wellness, or customer-success decisions?
+- Which participants or behavioral patterns need attention?
+- How are sleep and wellness related to activity?
+- Can historical activity support next-day predictions?
+- Which findings matter for product, engagement, wellness, or customer-success decisions?
 
-The challenge is to answer these questions using data that is:
+The data must be **consistent** across source tables, **validated** before analysis, **explorable** by non-technical stakeholders, **reproducible** through code, and **tied** to measurable business questions.
 
-- consistent across multiple source tables,
-- sufficiently validated before analysis,
-- easy for non-technical stakeholders to explore,
-- reproducible through code,
-- and connected to measurable business questions.
+### ✅ Objectives
 
----
-
-## Business Objectives
-
-The project is designed around five practical objectives:
-
-### 1. Measure Performance
-Track activity, steps, distance, intensity, calories, sleep, and other fitness KPIs.
-
-### 2. Understand Behavior
-Identify participant-level and time-based patterns in activity and wellness behavior.
-
-### 3. Detect Relationships
-Use statistical analysis to investigate relationships between operational and behavioral variables.
-
-### 4. Predict Outcomes
-Use historical activity information to generate predictive signals for calories, activity-target attainment, and sleep-target attainment.
-
-### 5. Support Decisions
-Translate analytical findings into business-oriented insights rather than stopping at visualization.
+| # | Objective | Description |
+|---|-----------|-------------|
+| 1 | 📏 **Measure Performance** | Track activity, steps, distance, intensity, calories, sleep, and related KPIs |
+| 2 | 🧠 **Understand Behavior** | Identify participant-level and time-based patterns |
+| 3 | 🔗 **Detect Relationships** | Use statistics to test relationships between operational and behavioral variables |
+| 4 | 🔮 **Predict Outcomes** | Generate predictive signals for calories, activity-target, and sleep-target attainment |
+| 5 | 🧭 **Support Decisions** | Translate findings into business-oriented insights, not just visuals |
 
 ---
 
-# Application Pages
-
-The Streamlit application is organized as a stakeholder-oriented analytics workspace.
+## 🖥️ Application Pages
 
 | Page | Business Purpose |
-|---|---|
-| **Executive Overview** | High-level KPI summary and overall fitness performance |
-| **Activity and Calories** | Analyze steps, distance, intensity, activity patterns, and calories |
-| **Sleep and Wellness** | Explore sleep behavior and wellness indicators |
-| **Participant Analysis** | Compare participant-level performance and behavior |
-| **Statistical Analysis** | Examine distributions, relationships, and statistical patterns |
-| **Predictive Insights** | View model outputs, performance, and prediction monitoring |
-| **SQL Playground** | Answer business questions using controlled SQL analysis |
-| **Business Insights** | Translate analytical results into stakeholder-ready findings |
+|------|------------------|
+| 🏠 **Executive Overview** | High-level KPI summary and overall fitness performance |
+| 🔥 **Activity and Calories** | Steps, distance, intensity, activity patterns, and calories |
+| 😴 **Sleep and Wellness** | Sleep behavior and wellness indicators |
+| 👥 **Participant Analysis** | Participant-level performance and behavior comparison |
+| 📐 **Statistical Analysis** | Distributions, relationships, and statistical patterns |
+| 🤖 **Predictive Insights** | Model outputs, performance, and prediction monitoring |
+| 🗄️ **SQL Playground** | Controlled, read-only SQL for business questions |
+| 💡 **Business Insights** | Stakeholder-ready findings and decision support |
+
+<!-- 📸 Add screenshots here, e.g.:
+![Executive Overview](images/executive_overview.png)
+-->
 
 ---
 
-# Key Analytical Questions
+## ❓ Key Analytical Questions
 
-The application is built around questions a business stakeholder could realistically ask.
-
-### Engagement & Activity
+<details>
+<summary><b>🏃 Engagement & Activity</b></summary>
 
 - How active are participants across the observed period?
 - What does daily activity look like over time?
 - Which activity levels are most common?
 - How do steps, distance, and intensity vary between participants?
 
-### Calories
+</details>
+
+<details>
+<summary><b>🔥 Calories</b></summary>
 
 - How does calorie expenditure vary by activity behavior?
 - Which variables are associated with higher or lower calorie expenditure?
 - Are there meaningful differences between participant groups?
 
-### Sleep & Wellness
+</details>
 
-- How frequently do participants achieve the defined sleep target?
+<details>
+<summary><b>😴 Sleep & Wellness</b></summary>
+
+- How often do participants achieve the defined sleep target?
 - How does sleep behavior vary across participants?
 - Are there observable relationships between sleep and activity?
 
-### Participant Performance
+</details>
+
+<details>
+<summary><b>👥 Participant Performance</b></summary>
 
 - Which participants show consistently high activity?
-- Which participants show lower or inconsistent engagement?
+- Which show lower or inconsistent engagement?
 - How stable are individual activity patterns?
 
-### Predictive Analytics
+</details>
 
-- Can historical activity signals help estimate next-day calories?
-- Can previous behavior help classify whether a participant will meet an activity target?
-- Can historical sleep information help classify sleep-target attainment?
+<details>
+<summary><b>🔮 Predictive Analytics</b></summary>
 
-### Business Analysis
+- Can historical activity signals estimate next-day calories?
+- Can previous behavior classify whether a participant will meet an activity target?
+- Can historical sleep information classify sleep-target attainment?
 
-- What findings are most relevant to engagement and wellness use cases?
+</details>
+
+<details>
+<summary><b>💼 Business Analysis</b></summary>
+
+- Which findings are most relevant to engagement and wellness use cases?
 - Where could monitoring or targeted interventions be considered?
-- Which metrics should stakeholders continue tracking?
+- Which metrics should stakeholders keep tracking?
+
+</details>
 
 ---
 
-# Analytics Workflow
+## 🔄 Analytics Workflow
 
-## 1. Data Preparation
+### 1️⃣ Data Preparation 🧹
 
-The project begins with multiple raw fitness datasets covering different levels of granularity, including:
+Multiple raw datasets at different granularities are consolidated into one analytical dataset:
 
-- daily activity
-- daily calories
-- daily intensities
-- daily steps
-- heart-rate observations
-- hourly calories
-- hourly intensities
-- hourly steps
-- minute-level calories
-- minute-level intensities
-- minute-level METs
-- minute-level sleep
-- minute-level steps
-- sleep-day records
-- weight-log records
+| Granularity | Sources |
+|-------------|---------|
+| 📅 **Daily** | activity, calories, intensities, steps, sleep-day records |
+| 🕐 **Hourly** | calories, intensities, steps |
+| ⏱️ **Minute-level** | calories, intensities, METs, sleep, steps |
+| ❤️ **Other** | heart-rate observations, weight-log records |
 
-The cleaning notebook consolidates the source data into a canonical analytical dataset.
-
-### Canonical Dataset
+The cleaning notebook (`notebooks/01_Fitness_Data_Cleaning_and_Merging.ipynb`) produces the canonical dataset and its metadata:
 
 ```text
-data/processed/fitness_daily_master.csv
-```
-
-Additional metadata is maintained in:
-
-```text
-data/processed/fitness_data_dictionary.csv
+data/processed/fitness_daily_master.csv       # canonical daily analytical dataset
+data/processed/fitness_data_dictionary.csv    # column definitions & metadata
 ```
 
 ---
 
-# Data Quality
+## 🧹 Data Quality
 
-A production-style analytics workflow should validate data before downstream modeling and reporting.
-
-The project includes a reusable data-quality gate that checks the analytical dataset before model training and prediction generation.
+A production-style workflow validates data **before** modeling and reporting. A reusable gate checks the analytical dataset before model training and prediction generation:
 
 ```text
 scripts/run_data_quality_gate.py
 ```
 
-The quality framework distinguishes between:
+| Status | Meaning |
+|--------|---------|
+| ✅ **PASS** | Validation completed successfully |
+| ⚠️ **WARN** | Known limitation or missingness pattern, handled by the pipeline |
+| ❌ **FAIL** | Condition that prevents reliable downstream processing |
 
-- **PASS** — validation completed successfully
-- **WARN** — a known limitation or missingness pattern exists but is handled by the pipeline
-- **FAIL** — a condition prevents reliable downstream processing
+### 🔍 Key Data Quality Consideration
 
-### Current Data Quality Consideration
+Sleep-related fields contain **substantial missingness**. Instead of treating missing sleep as a positive or negative outcome, the target logic was repaired so unavailable observations **remain missing** and are handled explicitly by the predictive workflow.
 
-Sleep-related fields contain substantial missingness in the historical data. Rather than treating missing sleep observations as a positive or negative sleep outcome, the target logic was repaired so unavailable observations remain missing and are handled explicitly by the predictive workflow.
+> 💬 **Principle:** Missing data should not automatically be interpreted as negative behavior.
 
-This is an important analytical principle:
-
-> Missing data should not automatically be interpreted as negative behavior.
-
-Quality and pipeline outputs are written to:
-
-```text
-data/quality/
-```
-
-These files are generated artifacts rather than core dashboard inputs.
+Quality and pipeline outputs are written to `data/quality/` (generated artifacts, not core dashboard inputs).
 
 ---
 
-# Predictive Analytics
+## 🤖 Predictive Analytics
 
-The project includes a reproducible predictive analytics pipeline for three business-relevant targets.
+A reproducible pipeline models three business-relevant targets:
 
-## Prediction Targets
+| 🎯 Target | 🧮 Problem Type | 💼 Business Meaning |
+|-----------|----------------|---------------------|
+| 🔥 **Calories** | Regression | Estimate next-day calorie expenditure |
+| 🏅 **Activity Target** | Classification | Predict whether a participant will meet the activity target |
+| 😴 **Sleep Target** | Classification | Predict whether a participant will meet the sleep target |
 
-| Target | Problem Type | Business Meaning |
-|---|---|---|
-| **Calories** | Regression | Estimate next-day calorie expenditure |
-| **Activity Target** | Classification | Predict whether the participant will meet the defined activity target |
-| **Sleep Target** | Classification | Predict whether the participant will meet the defined sleep target |
+Features use **lag-based historical activity** plus calendar variables, built only from information available **before** the prediction date to reduce target leakage.
 
-The model feature set uses historical activity information through lag-based features together with calendar variables.
+### 🛠️ Model Development Steps
 
-This is deliberately structured around **historical information available before the prediction date**, reducing the risk of target leakage.
+1. Feature preparation
+2. Chronological train / holdout / backtest split
+3. Model training
+4. Model comparison
+5. Evaluation
+6. Prediction generation
+7. Monitoring
+8. Model artifact storage
 
----
+Main script: `scripts/train_predictive_model.py`
 
-## Model Development
-
-The predictive workflow includes:
-
-1. feature preparation
-2. chronological train / holdout / backtest splitting
-3. model training
-4. model comparison
-5. evaluation
-6. prediction generation
-7. monitoring
-8. model artifact storage
-
-The main training script is:
-
-```text
-scripts/train_predictive_model.py
-```
-
-### Model Results
-
-The latest validated training run produced the following holdout metrics:
+### 📈 Holdout Results (latest validated run)
 
 | Model | Metric | Result |
-|---|---|---:|
-| Calories Regression | MAE | 469.21 |
-| Calories Regression | RMSE | 725.36 |
-| Calories Regression | R² | 0.296 |
-| Activity Target | Accuracy | 0.799 |
-| Activity Target | Precision | 0.590 |
-| Activity Target | Recall | 0.857 |
-| Activity Target | F1 | 0.699 |
-| Activity Target | ROC-AUC | 0.908 |
-| Sleep Target | Accuracy | 0.667 |
-| Sleep Target | Precision | 0.717 |
-| Sleep Target | Recall | 0.767 |
-| Sleep Target | F1 | 0.742 |
-| Sleep Target | ROC-AUC | 0.688 |
+|-------|--------|-------:|
+| 🔥 Calories Regression | MAE | 469.21 |
+| 🔥 Calories Regression | RMSE | 725.36 |
+| 🔥 Calories Regression | R² | 0.296 |
+| 🏅 Activity Target | Accuracy | 0.799 |
+| 🏅 Activity Target | Precision | 0.590 |
+| 🏅 Activity Target | Recall | 0.857 |
+| 🏅 Activity Target | F1 | 0.699 |
+| 🏅 Activity Target | ROC-AUC | 0.908 |
+| 😴 Sleep Target | Accuracy | 0.667 |
+| 😴 Sleep Target | Precision | 0.717 |
+| 😴 Sleep Target | Recall | 0.767 |
+| 😴 Sleep Target | F1 | 0.742 |
+| 😴 Sleep Target | ROC-AUC | 0.688 |
 
-For the calories target, a linear-regression comparison was also performed. The comparison helps demonstrate that model selection is based on measured performance rather than assuming a more complex model is automatically better.
+For calories, a **linear-regression baseline** was also compared, showing that model selection is driven by measured performance rather than assuming complexity is better.
 
-> These metrics are descriptive results from the historical dataset used in this project. They should not be interpreted as evidence of production performance on a new population.
+> ⚠️ These are descriptive results on the historical dataset used here. They are **not** evidence of production performance on a new population.
+
+### 🧾 Prediction Generation
+
+```text
+scripts/run_predictive_predictions.py  →  data/processed/predictions.csv
+```
+
+The output feeds the **Predictive Insights** page.
 
 ---
 
-# Prediction Generation
-
-After training, the pipeline generates participant-level prediction records.
-
-```text
-scripts/run_predictive_predictions.py
-```
-
-Output:
-
-```text
-data/processed/predictions.csv
-```
-
-The generated prediction dataset is used by the Streamlit predictive-insights page.
-
----
-
-# Prediction Monitoring
-
-The project also includes post-prediction monitoring.
+## 📡 Prediction Monitoring
 
 ```text
 scripts/run_predictive_monitoring.py
 ```
 
-Monitoring compares predictions with available actual outcomes and records model-review signals.
+Monitoring compares predictions against available actual outcomes and records model-review signals:
 
-The monitoring workflow evaluates:
+- 🔁 Prediction vs. actual outcome
+- 🏷️ Prediction status
+- 📏 Historical-range checks
+- 🌊 Feature-drift indicators
+- 🚩 Review-required conditions
 
-- prediction vs. actual outcome
-- prediction status
-- historical-range checks
-- feature-drift indicators
-- review-required conditions
-
-This creates a simple but realistic **model monitoring loop** instead of treating model training as a one-time activity.
+This creates a realistic **model monitoring loop** instead of treating training as a one-time task.
 
 ---
 
-# Production-Style Pipeline
+## ⚙️ Production-Style Pipeline
 
-The complete workflow can be executed through a single orchestrator:
+A single orchestrator runs the full workflow:
 
-```text
-scripts/run_production_pipeline.py
+```mermaid
+flowchart TD
+    A[🧹 Data Quality Gate] --> B[🤖 Model Training]
+    B --> C[🔮 Prediction Generation]
+    C --> D[📡 Prediction Monitoring]
+    D --> E[📝 Run Report]
 ```
-
-Pipeline sequence:
-
-```text
-Data Quality Gate
-        ↓
-Model Training
-        ↓
-Prediction Generation
-        ↓
-Prediction Monitoring
-        ↓
-Run Report
-```
-
-Example:
 
 ```bash
 python scripts/run_production_pipeline.py
 ```
 
-The pipeline produces run-level status and audit information under:
-
-```text
-data/quality/
-```
-
-This design makes the project closer to a real analytics workflow where data validation, model generation, and monitoring are connected rather than executed manually as unrelated notebook steps.
+Run-level status and audit information are written to `data/quality/`, so validation, modeling, and monitoring are connected rather than run as unrelated notebook steps.
 
 ---
 
-# SQL Analytics Playground
+## 🗄️ SQL Analytics Playground
 
-The application includes a controlled SQL Playground for business analysis.
+`pages/7_SQL_Playground.py` lets users answer business questions with **controlled, read-only SQL**.
 
-```text
-pages/7_SQL_Playground.py
-```
+### 🔒 Safeguards
 
-The SQL layer is designed for read-only analytical use.
+| Control | Description |
+|---------|-------------|
+| 🚦 Query type | `SELECT` / `WITH` only |
+| 1️⃣ Statement limit | Single statement per execution |
+| 📏 Size limits | Result-size and query-length caps |
+| ⏱️ Timeout | Execution timeout |
+| 🛡️ Access mode | SQLite read-only |
+| 🚫 Blocking | Write and schema operations blocked |
+| 📝 Auditing | Queries logged to `data/quality/sql_query_audit_log.csv` |
 
-The SQL execution framework includes controls such as:
+### 💼 Predefined Business Questions
 
-- `SELECT` / `WITH` query enforcement
-- single-statement execution
-- result-size limits
-- query-length limits
-- execution timeout
-- SQLite read-only access
-- write/schema operation blocking
-- query auditing
+Covers participant activity, performance comparison, productive activity behavior, rankings, trends, target attainment, and participant segmentation. Users can inspect the SQL before running it.
 
-The SQL functionality is intended to demonstrate how an analyst can translate business questions into reproducible SQL queries while maintaining basic execution safeguards.
-
----
-
-# Business Questions
-
-The SQL Playground includes predefined business-oriented questions covering areas such as:
-
-- participant activity
-- performance comparison
-- productive activity behavior
-- rankings
-- trends
-- target attainment
-- participant segmentation
-- other stakeholder-oriented analytical questions
-
-Users can also inspect the underlying SQL before execution.
-
-This supports an important Business Analyst workflow:
-
-**Business Question → Metric Definition → SQL Logic → Result → Interpretation**
+> 🔁 **Workflow:** Business Question → Metric Definition → SQL Logic → Result → Interpretation
 
 ---
 
-# Business Insights
+## 💡 Business Insights
 
-The final analytics layer translates findings into business-oriented observations.
+The final layer turns analysis into stakeholder-ready observations:
 
-Rather than presenting only charts, the Business Insights page focuses on:
+| Theme | Focus |
+|-------|-------|
+| 📊 **Performance** | What the data shows about overall participant activity and behavior |
+| 🤝 **Engagement** | Where participation or consistency differs |
+| 🌙 **Wellness** | How sleep and activity measures behave in the historical records |
+| 🔮 **Predictive Signals** | Where model outputs may help prioritize attention or monitoring |
+| 🧭 **Decision Support** | What stakeholders could monitor, investigate, or feed into future analysis |
 
-### Performance
-What the available data indicates about overall participant activity and behavior.
-
-### Engagement
-Where differences in participation or consistency may exist.
-
-### Wellness
-How sleep and activity measures behave within the available historical records.
-
-### Predictive Signals
-Where model outputs may help prioritize attention or monitoring.
-
-### Decision Support
-What stakeholders could reasonably monitor, investigate, or use as an input to future analysis.
-
-The objective is not to prescribe actions automatically, but to demonstrate how analytical evidence can support business decisions.
+The aim is not to prescribe actions automatically, but to show how analytical evidence supports business decisions.
 
 ---
 
-# Project Architecture
+## 🗂️ Project Architecture
 
 ```text
 Strava Fitness App Project/
 │
-├── Home.py
-├── README.md
-├── requirements.txt
-├── .gitignore
+├── 🏠 Home.py
+├── 📘 README.md
+├── 📦 requirements.txt
+├── 🙈 .gitignore
 │
-├── data/
+├── 📁 data/
 │   ├── processed/
 │   │   ├── fitness_daily_master.csv
 │   │   ├── fitness_data_dictionary.csv
 │   │   └── predictions.csv
-│   │
 │   ├── quality/
 │   │   ├── data_quality_report.json
 │   │   ├── production_pipeline_latest.json
 │   │   ├── production_pipeline_history.jsonl
 │   │   └── sql_query_audit_log.csv
-│   │
 │   └── raw / merged source datasets
 │
-├── images/
+├── 🖼️ images/
 │   └── strava_logo.png
 │
-├── models/
+├── 🤖 models/
 │   └── predictive_models/
 │       ├── activity_target/
 │       ├── calories/
 │       ├── sleep_target/
 │       └── monitoring_log.csv
 │
-├── notebooks/
+├── 📓 notebooks/
 │   └── 01_Fitness_Data_Cleaning_and_Merging.ipynb
 │
-├── pages/
+├── 📄 pages/
 │   ├── 1_Executive_Overview.py
 │   ├── 2_Activity_and_Calories.py
 │   ├── 3_Sleep_and_Wellness.py
@@ -453,14 +402,14 @@ Strava Fitness App Project/
 │   ├── 7_SQL_Playground.py
 │   └── 8_Business_Insights.py
 │
-├── scripts/
+├── ⚙️ scripts/
 │   ├── run_data_quality_gate.py
 │   ├── run_predictive_monitoring.py
 │   ├── run_predictive_predictions.py
 │   ├── run_production_pipeline.py
 │   └── train_predictive_model.py
 │
-└── utils/
+└── 🧰 utils/
     ├── __init__.py
     ├── data.py
     ├── data_quality.py
@@ -470,296 +419,173 @@ Strava Fitness App Project/
     └── theme.py
 ```
 
+### 🧱 Data Layers
+
+| Layer | Location | Role |
+|-------|----------|------|
+| 📥 **Source** | raw / merged datasets | Preserves original granularity |
+| 📦 **Analytical** | `fitness_daily_master.csv` | Central daily dataset for reporting and modeling |
+| 🔮 **Prediction** | `predictions.csv` | Prediction outputs consumed by the app |
+| 🤖 **Model** | `models/predictive_models/` | Trained artifacts and metadata |
+| 📡 **Monitoring** | `data/quality/` | Data-quality, pipeline, and SQL audit outputs |
+
 ---
 
-# Technology Stack
+## 🧰 Technology Stack
 
 | Area | Technologies |
-|---|---|
-| Application | Python, Streamlit |
-| Data Analysis | Pandas, NumPy |
-| Visualization | Plotly, Matplotlib |
-| Statistical Analysis | Python statistical tooling |
-| Machine Learning | Scikit-learn |
-| SQL | SQL, SQLite |
-| Data Processing | Python / Pandas |
-| Model Persistence | Joblib |
-| Development | VS Code, Git, GitHub |
-| Documentation | Markdown |
+|------|--------------|
+| 🖥️ Application | Python, Streamlit |
+| 🐼 Data Analysis | Pandas, NumPy |
+| 📊 Visualization | Plotly, Matplotlib |
+| 📐 Statistics | Python statistical tooling |
+| 🤖 Machine Learning | scikit-learn |
+| 🗄️ SQL | SQL, SQLite |
+| 💾 Model Persistence | Joblib |
+| 🛠️ Development | VS Code, Git, GitHub |
+| 📝 Documentation | Markdown |
 
 ---
 
-# Getting Started
+## 🚀 Getting Started
 
-## 1. Clone the repository
+**1️⃣ Clone the repository**
 
 ```bash
 git clone <your-github-repository-url>
 cd <repository-folder>
 ```
 
-## 2. Create a virtual environment
-
-### Windows
+**2️⃣ Create a virtual environment**
 
 ```bash
+# Windows
 python -m venv .venv
 .venv\Scripts\activate
-```
 
-### macOS / Linux
-
-```bash
+# macOS / Linux
 python -m venv .venv
 source .venv/bin/activate
 ```
 
-## 3. Install dependencies
+**3️⃣ Install dependencies**
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## 4. Run the Streamlit application
+**4️⃣ Run the app**
 
 ```bash
 streamlit run Home.py
 ```
 
-The application will open in the browser.
+The application opens in your browser. 🎉
 
 ---
 
-# Reproducing the Analytics Pipeline
+## 🔁 Reproducing the Pipeline
 
-The application can be used directly from the prepared analytical data.
-
-For a complete model refresh, run:
+The app works directly from the prepared analytical data. For a full model refresh:
 
 ```bash
 python scripts/run_production_pipeline.py
 ```
 
-Or execute the individual stages:
+Or run each stage independently:
 
 ```bash
 python scripts/run_data_quality_gate.py
-```
-
-```bash
 python scripts/train_predictive_model.py
-```
-
-```bash
 python scripts/run_predictive_predictions.py
-```
-
-```bash
 python scripts/run_predictive_monitoring.py --model all
 ```
 
-This structure supports reproducibility and makes each stage independently auditable.
+Each stage is independently auditable.
 
 ---
 
-# Data Design
+## 🏛️ Analytical Governance
 
-The analytical workflow separates source data from the canonical dataset.
-
-### Source Layer
-
-Multiple merged datasets preserve the original granularity of the collected fitness observations.
-
-### Analytical Layer
-
-```text
-fitness_daily_master.csv
-```
-
-acts as the central daily analytical dataset used by downstream reporting and predictive workflows.
-
-### Prediction Layer
-
-```text
-predictions.csv
-```
-
-stores generated prediction outputs for application consumption.
-
-### Model Layer
-
-```text
-models/predictive_models/
-```
-
-stores trained model artifacts and associated metadata.
-
-### Monitoring Layer
-
-```text
-data/quality/
-```
-
-stores data-quality, pipeline, and SQL audit outputs.
-
-This separation supports a simple analytics architecture:
-
-```text
-Source Data
-    ↓
-Data Preparation
-    ↓
-Canonical Analytical Dataset
-    ↓
- ┌───────────────┬──────────────────┬─────────────────┐
- ↓               ↓                  ↓
-Dashboards     SQL Analysis      Predictive Models
- ↓               ↓                  ↓
-Business Insights ←────── Decision Support ──────→ Monitoring
-```
+| Practice | How it is applied |
+|----------|-------------------|
+| 🔁 **Reproducibility** | Core transformations and model workflows live in Python scripts, not only notebooks |
+| 📏 **Metric Consistency** | One canonical dataset keeps dashboards, SQL, and model features aligned |
+| ✅ **Data Validation** | A dedicated quality gate runs before the predictive pipeline |
+| 🚫 **Leakage Prevention** | Features use only information available before the prediction date |
+| 📡 **Monitoring** | Predictions are evaluated after generation |
+| 🔒 **Controlled SQL** | Read-only, audited analytical access |
 
 ---
 
-# Analytical Governance
+## ⚠️ Limitations
 
-Several practices were intentionally included to make the project closer to real-world analytics work.
-
-### Reproducibility
-
-Core transformations and model workflows are implemented in Python scripts rather than relying entirely on manual notebook execution.
-
-### Metric Consistency
-
-The application is built around a canonical analytical dataset so that dashboard metrics, SQL analysis, and predictive features are aligned.
-
-### Data Validation
-
-A dedicated quality gate runs before the predictive pipeline.
-
-### Leakage Prevention
-
-Predictive features are based on historical information relative to the prediction date.
-
-### Monitoring
-
-Predictions are evaluated after generation instead of assuming that a trained model remains reliable indefinitely.
-
-### Controlled SQL
-
-The SQL Playground is intentionally restricted to read-only analytical access.
+- 🗓️ **Historical data only** — not a continuously updating production stream
+- 🔐 **No authentication** — no user-account system implemented
+- 🔌 **No live ingestion** — no production pipeline from a fitness platform API
+- 👥 **Limited population** — model performance depends on the participants and period represented
+- 🔮 **Predictions are decision support** — analytical signals, not guaranteed outcomes
+- 🕳️ **Missing data** — sleep-related fields have missing observations; the workflow handles missingness explicitly rather than assuming a behavioral outcome
 
 ---
 
-# Important Limitations
+## 🏆 What This Project Demonstrates
 
-This project uses a **historical fixed dataset**, so several real-world capabilities are outside the current scope.
+### 📊 Data Analyst Skills
 
-### Historical Data Only
-
-The application does not represent a continuously updating production data stream.
-
-### No Live User Authentication
-
-There is no implemented user-account or authentication system.
-
-### No External Production Ingestion
-
-The project does not claim to provide a live production ingestion pipeline from a fitness platform API.
-
-### Limited Population
-
-Model performance is dependent on the population and historical period represented in the dataset.
-
-### Predictive Results Are Decision Support
-
-Predictions should be treated as analytical signals rather than guaranteed outcomes.
-
-### Missing Data
-
-Some wellness fields, particularly sleep-related fields, contain missing observations. The modeling workflow explicitly handles missingness rather than assuming missing values represent a behavioral outcome.
-
----
-
-# What This Project Demonstrates
-
-From a **Data Analyst** perspective:
-
-- data cleaning and preparation
-- exploratory data analysis
-- KPI design
-- dashboard development
-- statistical analysis
+- Data cleaning and preparation
+- Exploratory data analysis
+- KPI design and dashboard development
+- Statistical analysis
 - SQL analytics
-- analytical storytelling
-- predictive modeling
-- model evaluation
-- data-quality validation
-- reproducible analytical workflows
+- Predictive modeling and evaluation
+- Data-quality validation
+- Reproducible analytical workflows
+- Analytical storytelling
 
-From a **Business Analyst** perspective:
+### 💼 Business Analyst Skills
 
-- converting business questions into measurable metrics
-- stakeholder-oriented dashboard design
-- structured problem solving
-- performance analysis
-- segmentation and comparison
-- identifying meaningful trends
-- translating quantitative findings into business insights
-- supporting evidence-based decisions
-- communicating limitations and uncertainty
+- Converting business questions into measurable metrics
+- Stakeholder-oriented dashboard design
+- Structured problem solving
+- Performance analysis, segmentation, and comparison
+- Identifying meaningful trends
+- Translating quantitative findings into business insights
+- Supporting evidence-based decisions
+- Communicating limitations and uncertainty
 
----
+### ⭐ Portfolio Highlights
 
-# Portfolio Highlights
-
-### End-to-End Analytics
-
-The project covers the full analytical journey from raw datasets to business-facing outputs.
-
-### Stakeholder-Oriented Reporting
-
-The application is structured around business questions and decision-support use cases rather than only technical demonstrations.
-
-### Predictive Analytics
-
-Three predictive targets demonstrate regression and classification workflows using historical behavioral data.
-
-### SQL Business Analysis
-
-The SQL Playground demonstrates practical SQL querying tied to business questions.
-
-### Data Quality & Monitoring
-
-The project includes validation, pipeline status reporting, prediction monitoring, and SQL query auditing.
-
-### Reproducibility
-
-The main data and model workflows can be executed through scripts instead of depending solely on manual notebook steps.
+| Highlight | Description |
+|-----------|-------------|
+| 🔗 **End-to-End Analytics** | Raw datasets to business-facing outputs |
+| 🎯 **Stakeholder Reporting** | Built around business questions, not just technical demos |
+| 🤖 **Predictive Analytics** | Regression and classification on historical behavioral data |
+| 🗄️ **SQL Business Analysis** | Practical SQL tied to business questions |
+| 🛡️ **Quality & Monitoring** | Validation, pipeline status, prediction monitoring, SQL auditing |
+| 🔁 **Reproducibility** | Main workflows executable via scripts |
 
 ---
 
-# Suggested Portfolio Talking Points
+## 🎤 Portfolio Talking Points
 
-A concise way to present the project in an interview:
+> *Built an end-to-end fitness analytics application in Python and Streamlit that transformed multi-granular activity data into KPI dashboards, statistical analysis, business-oriented SQL insights, and predictive models for calorie expenditure, activity-target attainment, and sleep-target attainment. Implemented a data-quality gate, reproducible model pipeline, prediction monitoring, and controlled SQL execution to make the workflow closer to a real-world analytics solution.*
 
-> **Built an end-to-end fitness analytics application in Python and Streamlit that transformed multi-granular activity data into KPI dashboards, statistical analysis, business-oriented SQL insights, and predictive models for calorie expenditure, activity-target attainment, and sleep-target attainment. Implemented a data-quality gate, reproducible model pipeline, prediction monitoring, and controlled SQL execution to make the workflow closer to a real-world analytics solution.**
-
----
-
-# Project Outcome
-
-The final application demonstrates how analytical teams can combine:
-
-**Data → Metrics → Insights → Predictions → Monitoring**
-
-into a single decision-support workflow.
-
-The project is intentionally scoped around the capabilities supported by the historical dataset, while still applying real-world analytics practices such as data validation, reproducibility, model evaluation, monitoring, and stakeholder-oriented storytelling.
+**Project outcome:** `Data → Metrics → Insights → Predictions → Monitoring` in a single decision-support workflow.
 
 ---
 
-## License
+## 📄 License
 
 This project is intended as a portfolio and learning project.
+Add the appropriate license (e.g., MIT) here if the repository will be distributed publicly.
 
-Add the appropriate license here if the repository will be distributed publicly under a specific license.
+---
+
+<div align="center">
+
+⭐ If you found this project useful, consider giving it a star!
+
+**Built with 🐍 Python · 📊 Streamlit · 🤖 scikit-learn**
+
+</div>
